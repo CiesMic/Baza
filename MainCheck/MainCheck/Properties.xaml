@@ -17,6 +17,7 @@
         </Grid.RowDefinitions>
         <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" VerticalAlignment="Top">
             <Label Name="LName" MinHeight="64" Content="Name: " FontFamily="Bahnschrift Light Condensed" FontSize="45"/>
+            <Label Name="LSurname" MinHeight="64" Content="Surname: " FontFamily="Bahnschrift Light Condensed" FontSize="45"/>
         </StackPanel>
     </Grid>
 </Window>

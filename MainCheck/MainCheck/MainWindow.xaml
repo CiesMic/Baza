@@ -22,6 +22,7 @@
         </Grid.RowDefinitions>
         <Button Name="Properties" Content="Properties" Grid.Column="4" Grid.Row="1" VerticalAlignment="Bottom" Margin="10,0,0,0" MinHeight="50" MinWidth="100" Click="Properties_Click" Background="Orchid" FontSize="35" FontFamily="Bahnschrift Light Condensed"/>
         <Button Name="Serial" Content="Serialize" Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom" FontSize="35" FontFamily="Bahnschrift Light Condensed" Background="Azure" Click="Serial_Click"/>
-
+        <Button Name="Deserial" Content="Deserialize" Grid.Column="3" Grid.Row="1" VerticalAlignment="Bottom" FontSize="35" FontFamily="Bahnschrift Light Condensed" Background="Azure" Click="Deserial_Click"/>
+        
     </Grid>
 </Window>

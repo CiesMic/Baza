@@ -20,5 +20,6 @@
             <RowDefinition Height="0.5*"/>
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
+        <Button Name="Properties" Content="Properties" Grid.Column="4" Grid.Row="1" VerticalAlignment="Bottom" Margin="10,0,0,0" MinHeight="50" MinWidth="100" Click="Properties_Click" Background="Orchid" FontSize="35" FontFamily="Bahnschrift Light Condensed"/>
     </Grid>
 </Window>

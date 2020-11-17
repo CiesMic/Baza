@@ -24,5 +24,22 @@ namespace MainCheck
         {
             InitializeComponent();
         }
+        private void But_Add_Click(object sender, RoutedEventArgs e)
+        {
+            string _Name;
+            string _Surname;
+            long _PESEL;
+            try
+            {
+                if (!String.IsNullOrEmpty(TxtName.Text) && !String.IsNullOrWhiteSpace(TxtName.Text) && !String.IsNullOrEmpty(TxtSurname.Text) && !String.IsNullOrWhiteSpace(TxtSurname.Text) && !String.IsNullOrEmpty(TxtPESEL.Text) && !String.IsNullOrWhiteSpace(TxtPESEL.Text))
+                {
+
+                }
+            }
+            catch
+            {
+
+            }
+        }
     }
 }

@@ -33,7 +33,14 @@ namespace MainCheck
             {
                 if (!String.IsNullOrEmpty(TxtName.Text) && !String.IsNullOrWhiteSpace(TxtName.Text) && !String.IsNullOrEmpty(TxtSurname.Text) && !String.IsNullOrWhiteSpace(TxtSurname.Text) && !String.IsNullOrEmpty(TxtPESEL.Text) && !String.IsNullOrWhiteSpace(TxtPESEL.Text))
                 {
-
+                    _Name = TxtName.Text;
+                    _Surname = TxtSurname.Text;
+                    _PESEL = Convert.ToInt64(TxtPESEL.Text);
+                    _baza = new Baza(_Name, _Surname, _PESEL);
+                    MainWindow._bazaDanych.Add(_baza);
+                    TxtName.Text = "";
+                    TxtSurname.Text = "";
+                    TxtPESEL.Text = "";
                 }
             }
             catch

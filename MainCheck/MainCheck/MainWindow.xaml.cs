@@ -27,5 +27,13 @@ namespace MainCheck
         {
             InitializeComponent();
         }
+        private void Serial_Click(object sender, RoutedEventArgs e)
+        {
+            Stream str = File.Create(Environment.CurrentDirectory + "\\Test.txt");
+            XmlSerializer xmlSer = new XmlSerializer(typeof(List<Baza>));
+            xmlSer.Serialize(str, _bazaDanych);
+            str.Close();
+            MessageBoxResult result = MessageBox.Show("Done", "Serialize", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+        }
     }
 }

@@ -25,5 +25,6 @@
             <TextBox Name="TxtSurname" MinHeight="64" FontFamily="Bahnschrift Light Condensed" FontSize="25" TextAlignment="Center" Background="LightYellow"/>
             <TextBox Name="TxtPESEL" MinHeight="64" FontFamily="Bahnschrift Light Condensed" FontSize="25" TextAlignment="Center" Background="LightYellow"/>
         </StackPanel>
+        <Button Name ="But_Add" Content="Add" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" FontSize="38" Click="But_Add_Click" FontFamily="Bahnschrift Light Condensed" Background="Aquamarine" Margin="100,20,100,20"/>
     </Grid>
 </Window>

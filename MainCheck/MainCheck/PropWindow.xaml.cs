@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace MainCheck
 {
     /// <summary>
-    /// Interaction logic for Properties.xaml
+    /// Interaction logic for PropWindow.xaml
     /// </summary>
-    public partial class Properties : Window
+    public partial class PropWindow : Window
     {
-        public Properties()
+        public PropWindow()
         {
             InitializeComponent();
         }

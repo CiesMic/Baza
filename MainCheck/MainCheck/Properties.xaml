@@ -21,7 +21,9 @@
             <Label Name="LPESEL" MinHeight="64" Content="PESEL: " FontFamily="Bahnschrift Light Condensed" FontSize="45"/>
         </StackPanel>
         <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" VerticalAlignment="Top">
-            
+            <TextBox Name="TxtName" MinHeight="64" FontFamily="Bahnschrift Light Condensed" FontSize="25" TextAlignment="Center" Background="LightYellow"/>
+            <TextBox Name="TxtSurname" MinHeight="64" FontFamily="Bahnschrift Light Condensed" FontSize="25" TextAlignment="Center" Background="LightYellow"/>
+            <TextBox Name="TxtPESEL" MinHeight="64" FontFamily="Bahnschrift Light Condensed" FontSize="25" TextAlignment="Center" Background="LightYellow"/>
         </StackPanel>
     </Grid>
 </Window>

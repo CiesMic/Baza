@@ -54,5 +54,21 @@ namespace MainCheck
         {
             Refresh();
         }
+        private void Deserial_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                FileStream stream = File.OpenRead(Environment.CurrentDirectory + "\\Test.txt");
+                XmlSerializer xmlSer = new XmlSerializer(typeof(List<Baza>));
+                _bazaDanych = (List<Baza>)xmlSer.Deserialize(stream);
+                stream.Close();
+                Refresh();
+            }
+            catch
+            {
+                WriteFirstRow();
+                Refresh();
+            }
+        }
     }
 }

@@ -19,6 +19,7 @@ namespace MainCheck
     /// </summary>
     public partial class PropWindow : Window
     {
+        Baza _baza;
         public PropWindow()
         {
             InitializeComponent();

@@ -22,6 +22,7 @@ namespace MainCheck
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static List<Baza> _bazaDanych = new List<Baza>();
         public MainWindow()
         {
             InitializeComponent();

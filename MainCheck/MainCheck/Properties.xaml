@@ -7,6 +7,13 @@
         mc:Ignorable="d"
         Title="Add Something You Want" Height="320" Width="350" MinHeight="320" MinWidth="350" MaxWidth="350" MaxHeight="320" Background="LightCyan">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.5*"/>
+        </Grid.RowDefinitions>
     </Grid>
 </Window>

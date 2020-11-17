@@ -50,5 +50,9 @@ namespace MainCheck
             str.Close();
             MessageBoxResult result = MessageBox.Show("Done", "Serialize", MessageBoxButton.OK, MessageBoxImage.Asterisk);
         }
+        protected void But_Refresh_Click(object sender, RoutedEventArgs e)
+        {
+            Refresh();
+        }
     }
 }

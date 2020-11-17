@@ -27,6 +27,16 @@ namespace MainCheck
         {
             InitializeComponent();
         }
+        private void WriteFirstRow()
+        {
+            _bazaDanych.AddRange(new Baza[]
+            {
+            new Baza("Mikolaj", "Kopernik", 8520147410),
+            new Baza("Kacper", "Qwerty", 23052062148),
+            new Baza("Zenom", "Karynia", 03526252892),
+        });
+            Refresh();
+        }
         private void Refresh()
         {
             WriteList.ItemsSource = "";

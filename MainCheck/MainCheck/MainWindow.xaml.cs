@@ -37,6 +37,11 @@ namespace MainCheck
         });
             Refresh();
         }
+        private void Properties_Click(object sender, RoutedEventArgs e)
+        {
+            PropWindow _properties = new PropWindow();
+            _properties.Show();
+        }
         private void Refresh()
         {
             WriteList.ItemsSource = "";

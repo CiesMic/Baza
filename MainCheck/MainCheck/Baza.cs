@@ -13,6 +13,7 @@ namespace MainCheck
         public string Name { get; set; }
         public string Surname { get; set; }
         public long PESEL { get; set; }
+        public Image _img { get; set; }
         public Baza()
         {
             Name = " ";
@@ -30,10 +31,6 @@ namespace MainCheck
             Name = o.Name;
             Surname = o.Surname;
             PESEL = o.PESEL;
-        }
-        public void Write(ListBox lb)
-        {
-            lb.Items.Add(Name + " " + Surname + " " + PESEL);
         }
     }
 }

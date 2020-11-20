@@ -1,0 +1,34 @@
+﻿<Window x:Class="MainCheck.ToChange"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MainCheck"
+        mc:Ignorable="d"
+        Title="ToChange" Height="500" Width="450" MinHeight="500" MinWidth="450" MaxWidth="450" MaxHeight="400" Background="LightCyan">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.5*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" VerticalAlignment="Top">
+            <Label Name="LName" MinHeight="64" Content="Name: " FontFamily="Bahnschrift Light Condensed" FontSize="45"/>
+            <Label Name="LSurname" MinHeight="64" Content="Surname: " FontFamily="Bahnschrift Light Condensed" FontSize="45"/>
+            <Label Name="LPESEL" MinHeight="64" Content="PESEL: " FontFamily="Bahnschrift Light Condensed" FontSize="45"/>
+            <Label Name="LMotherName" MinHeight="64" Content="MotherName: " FontFamily="Bahnschrift Light Condensed" FontSize="45"/>
+            <Label Name="LFatherName" MinHeight="64" Content="FatherName: " FontFamily="Bahnschrift Light Condensed" FontSize="45"/>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" VerticalAlignment="Top">
+            <TextBox Name="TxtName" MinHeight="64" FontFamily="Bahnschrift Light Condensed" FontSize="25" TextAlignment="Center" Background="LightYellow"/>
+            <TextBox Name="TxtSurname" MinHeight="64" FontFamily="Bahnschrift Light Condensed" FontSize="25" TextAlignment="Center" Background="LightYellow"/>
+            <TextBox Name="TxtPESEL" MinHeight="64" FontFamily="Bahnschrift Light Condensed" FontSize="25" TextAlignment="Center" Background="LightYellow"/>
+            <TextBox Name="TxtMotherName" MinHeight="64" FontFamily="Bahnschrift Light Condensed" FontSize="25" TextAlignment="Center" Background="LightYellow"/>
+            <TextBox Name="TxtFatherName" MinHeight="64" FontFamily="Bahnschrift Light Condensed" FontSize="25" TextAlignment="Center" Background="LightYellow"/>
+        </StackPanel>
+        <Button Name ="Change" Content="Change" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" FontSize="38" Click="But_Chg_Click" FontFamily="Bahnschrift Light Condensed" Background="Aquamarine" Margin="100,20,100,20"/>
+    </Grid>
+</Window>

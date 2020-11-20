@@ -79,5 +79,21 @@ namespace MainCheck
                 WriteFirstRow();
             }
         }
+
+        private void ChangeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (WriteList.SelectedItem != null)
+            {
+                string Name = (WriteList.SelectedItem as Baza).Name;
+                string Surname = (WriteList.SelectedItem as Baza).Surname;
+                long PESEL = Convert.ToInt64((WriteList.SelectedItem as Baza).PESEL);
+                string MotherName = (WriteList.SelectedItem as Baza).MotherName;
+                string FatherName = (WriteList.SelectedItem as Baza).FatherName;
+                string _imgFile = (WriteList.SelectedItem as Baza)._imgFile;
+                int i = WriteList.SelectedIndex;
+                ToChange change = new ToChange(Name, Surname, PESEL, MotherName, FatherName, i, _imgFile);
+                change.Show();
+            }
+        }
     }
 }

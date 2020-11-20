@@ -28,14 +28,16 @@
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
-                    <GridViewColumn Header="Name" Width="200" DisplayMemberBinding="{Binding Name}"/>
-                    <GridViewColumn Header="Surname" Width="200" DisplayMemberBinding="{Binding Surname}"/>
-                    <GridViewColumn Header="PESEL" Width="200" DisplayMemberBinding="{Binding PESEL}"/>
+                    <GridViewColumn Header="Name" Width="135" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Surname" Width="135" DisplayMemberBinding="{Binding Surname}"/>
+                    <GridViewColumn Header="PESEL" Width="135" DisplayMemberBinding="{Binding PESEL}"/>
+                        <GridViewColumn Header="MotherName" Width="135" DisplayMemberBinding="{Binding MotherName}"/>
+                        <GridViewColumn Header="FatherName" Width="135" DisplayMemberBinding="{Binding FatherName}"/>
                         <GridViewColumn Header="Image">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
-                                        <Image Width="200" Source="{Binding IconUri}"/>
+                                        <Image Width="50" Source="{Binding IconUri}"/>
                                     </StackPanel>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>

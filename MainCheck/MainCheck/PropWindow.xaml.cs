@@ -31,14 +31,18 @@ namespace MainCheck
             string _Surname;
             long _PESEL;
             string _imgFile;
+            string _MotherName;
+            string _FatherName;
             Image _image = new Image();
             try
             {
-                if (!String.IsNullOrEmpty(TxtName.Text) && !String.IsNullOrWhiteSpace(TxtName.Text) && !String.IsNullOrEmpty(TxtSurname.Text) && !String.IsNullOrWhiteSpace(TxtSurname.Text) && !String.IsNullOrEmpty(TxtPESEL.Text) && !String.IsNullOrWhiteSpace(TxtPESEL.Text))
+                if (!String.IsNullOrEmpty(TxtName.Text) && !String.IsNullOrWhiteSpace(TxtName.Text) && !String.IsNullOrEmpty(TxtSurname.Text) && !String.IsNullOrWhiteSpace(TxtSurname.Text) && !String.IsNullOrEmpty(TxtPESEL.Text) && !String.IsNullOrWhiteSpace(TxtPESEL.Text) && !String.IsNullOrEmpty(TxtMotherName.Text) && !String.IsNullOrWhiteSpace(TxtMotherName.Text) && !String.IsNullOrEmpty(TxtFatherName.Text) && !String.IsNullOrWhiteSpace(TxtFatherName.Text))
                 {
                     _Name = TxtName.Text;
                     _Surname = TxtSurname.Text;
                     _PESEL = Convert.ToInt64(TxtPESEL.Text);
+                    _MotherName = TxtMotherName.Text;
+                    _FatherName = TxtFatherName.Text;
                     OpenFileDialog ofd = new OpenFileDialog();
                     ofd.Filter = "(*.BMP;*.JPG;*.GIF)|*.BMP;*.JPG;*.GIF|All files (*.*)|*.*";
                     ofd.Multiselect = false;
@@ -50,11 +54,13 @@ namespace MainCheck
                     {
                         _imgFile = @"C:\Users\zwari\source\repos\Baza\MainCheck\MainCheck\bin\Debug\Pictures\Empty.png";
                     }
-                    _baza = new Baza(_Name, _Surname, _PESEL, _imgFile);
+                    _baza = new Baza(_Name, _Surname, _PESEL, _imgFile, _MotherName, _FatherName);
                     MainWindow._bazaDanych.Add(_baza);
                     TxtName.Text = "";
                     TxtSurname.Text = "";
                     TxtPESEL.Text = "";
+                    TxtMotherName.Text = "";
+                    TxtFatherName.Text = "";
                 }
             }
             catch

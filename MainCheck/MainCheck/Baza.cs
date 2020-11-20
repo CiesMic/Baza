@@ -18,11 +18,15 @@ namespace MainCheck
         public string Surname { get; set; }
         public long PESEL { get; set; }
         public string _imgFile { get; set; }
+        public string MotherName { get; set; }
+        public string FatherName { get; set; }
         public Baza()
         {
             Name = " ";
             Surname = " ";
             PESEL = 0;
+            MotherName = " ";
+            FatherName = " ";
             _imgFile = @"C:\Users\zwari\source\repos\Baza\MainCheck\MainCheck\bin\Debug\Pictures\Empty.png";
         }
         [XmlIgnore]
@@ -56,12 +60,14 @@ namespace MainCheck
                 obrazek.UriSource = value;
             }
         }
-        public Baza(string Name, string Surname, long PESEL, string _imgFile)
+        public Baza(string Name, string Surname, long PESEL, string _imgFile, string MotherName, string FatherName)
         {
             this.Name = Name;
             this.Surname = Surname;
             this.PESEL = PESEL;
             this._imgFile = _imgFile;
+            this.MotherName = MotherName;
+            this.FatherName = FatherName;
             obrazek = new BitmapImage();
             obrazek.BeginInit();
             obrazek.UriSource = new Uri(_imgFile, UriKind.Absolute);

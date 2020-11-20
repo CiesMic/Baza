@@ -34,9 +34,9 @@ namespace MainCheck
         {
             _bazaDanych.AddRange(new Baza[]
             {
-            new Baza("Mikolaj", "Kopernik", 8520147410, Environment.CurrentDirectory + "\\Pictures\\Empty.png"),
-            new Baza("Kacper", "Qwerty", 23052062148, Environment.CurrentDirectory + "\\Pictures\\Empty.png"),
-            new Baza("Zenom", "Karynia", 03526252892, Environment.CurrentDirectory + "\\Pictures\\Empty.png"),
+            new Baza("Mikolaj", "Kopernik", 8520147410, Environment.CurrentDirectory + "\\Pictures\\Empty.png" , "Angelika", "Pawel"),
+            new Baza("Kacper", "Qwerty", 23052062148, Environment.CurrentDirectory + "\\Pictures\\Empty.png", "Paulina", "Adam"),
+            new Baza("Zenom", "Karynia", 03526252892, Environment.CurrentDirectory + "\\Pictures\\Empty.png", "Julka", "Stanislaw"),
         });
             Refresh();
         }
@@ -76,7 +76,7 @@ namespace MainCheck
             }
             catch
             {
-                MessageBox.Show("Brak pliku do załadowania!", "Uwaga", MessageBoxButton.OK);
+                WriteFirstRow();
             }
         }
     }

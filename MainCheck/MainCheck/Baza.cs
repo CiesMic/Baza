@@ -36,7 +36,13 @@ namespace MainCheck
         {
             get
             {
-                if (obrazek == null) return null;
+                if (obrazek == null)
+                {
+                    obrazek = new BitmapImage();
+                    obrazek.BeginInit();
+                    obrazek.UriSource = new Uri(_imgFile, UriKind.Absolute);
+                    obrazek.EndInit();
+                }
                 return obrazek;
             }
             set

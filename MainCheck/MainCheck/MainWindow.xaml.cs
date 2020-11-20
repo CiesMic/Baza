@@ -14,6 +14,9 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
 using System.Xml.Serialization;
+using Microsoft.Win32;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Xml;
 
 namespace MainCheck
 {
@@ -31,9 +34,9 @@ namespace MainCheck
         {
             _bazaDanych.AddRange(new Baza[]
             {
-            new Baza("Mikolaj", "Kopernik", 8520147410),
-            new Baza("Kacper", "Qwerty", 23052062148),
-            new Baza("Zenom", "Karynia", 03526252892),
+            new Baza("Mikolaj", "Kopernik", 8520147410, Environment.CurrentDirectory + "\\Pictures\\Empty.png"),
+            new Baza("Kacper", "Qwerty", 23052062148, Environment.CurrentDirectory + "\\Pictures\\Empty.png"),
+            new Baza("Zenom", "Karynia", 03526252892, Environment.CurrentDirectory + "\\Pictures\\Empty.png"),
         });
             Refresh();
         }
@@ -49,11 +52,12 @@ namespace MainCheck
         }
         private void Serial_Click(object sender, RoutedEventArgs e)
         {
-            Stream str = File.Create(Environment.CurrentDirectory + "\\Test.txt");
-            XmlSerializer xmlSer = new XmlSerializer(typeof(List<Baza>));
-            xmlSer.Serialize(str, _bazaDanych);
-            str.Close();
-            MessageBoxResult result = MessageBox.Show("Done", "Serialize", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+            var serializer = new XmlSerializer(_bazaDanych.GetType());
+            using (var writer = XmlWriter.Create(Environment.CurrentDirectory + "\\Test.txt"))
+            {
+                serializer.Serialize(writer, _bazaDanych);
+                MessageBoxResult result = MessageBox.Show("Done", "Serialize", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+            }
         }
         protected void But_Refresh_Click(object sender, RoutedEventArgs e)
         {
@@ -63,16 +67,16 @@ namespace MainCheck
         {
             try
             {
-                FileStream stream = File.OpenRead(Environment.CurrentDirectory + "\\Test.txt");
-                XmlSerializer xmlSer = new XmlSerializer(typeof(List<Baza>));
-                _bazaDanych = (List<Baza>)xmlSer.Deserialize(stream);
-                stream.Close();
-                Refresh();
+                using (var reader = new StreamReader(Environment.CurrentDirectory + "\\Test.txt"))
+                {
+                    XmlSerializer deserializer = new XmlSerializer(typeof(List<Baza>),
+                    new XmlRootAttribute("ArrayOfBaza"));
+                    _bazaDanych = (List<Baza>)deserializer.Deserialize(reader);
+                }
             }
             catch
             {
-                WriteFirstRow();
-                Refresh();
+                MessageBox.Show("Brak pliku do załadowania!", "Uwaga", MessageBoxButton.OK);
             }
         }
     }

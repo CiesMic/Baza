@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MainCheck"
         mc:Ignorable="d"
-        Title="You've Something You Want" Height="450" Width="750" MinHeight="300" MinWidth="750" MaxWidth="750" Background="LightGreen">
+        Title="You've Something You Want" Height="450" Width="800" MinHeight="300" MinWidth="800" MaxWidth="750" Background="LightGreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -27,9 +27,20 @@
         <ListView FontSize="20" FontFamily="Bahnschrift Light Condensed" Name="WriteList" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="5" Grid.RowSpan="2">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Name" Width="241" DisplayMemberBinding="{Binding Name}"/>
-                    <GridViewColumn Header="Surname" Width="241" DisplayMemberBinding="{Binding Surname}"/>
-                    <GridViewColumn Header="PESEL" Width="241" DisplayMemberBinding="{Binding PESEL}"/>
+                    <GridView.Columns>
+                    <GridViewColumn Header="Name" Width="200" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Surname" Width="200" DisplayMemberBinding="{Binding Surname}"/>
+                    <GridViewColumn Header="PESEL" Width="200" DisplayMemberBinding="{Binding PESEL}"/>
+                        <GridViewColumn Header="Image">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Width="200" Source="{Binding IconUri}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView.Columns>
                 </GridView>
             </ListView.View>
         </ListView>

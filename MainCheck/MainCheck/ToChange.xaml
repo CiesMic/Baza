@@ -23,11 +23,11 @@
             <Label Name="LFatherName" MinHeight="64" Content="FatherName: " FontFamily="Bahnschrift Light Condensed" FontSize="45"/>
         </StackPanel>
         <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" VerticalAlignment="Top">
-            <TextBox Name="TxtName" MinHeight="64" FontFamily="Bahnschrift Light Condensed" FontSize="25" TextAlignment="Center" Background="LightYellow"/>
-            <TextBox Name="TxtSurname" MinHeight="64" FontFamily="Bahnschrift Light Condensed" FontSize="25" TextAlignment="Center" Background="LightYellow"/>
-            <TextBox Name="TxtPESEL" MinHeight="64" FontFamily="Bahnschrift Light Condensed" FontSize="25" TextAlignment="Center" Background="LightYellow"/>
-            <TextBox Name="TxtMotherName" MinHeight="64" FontFamily="Bahnschrift Light Condensed" FontSize="25" TextAlignment="Center" Background="LightYellow"/>
-            <TextBox Name="TxtFatherName" MinHeight="64" FontFamily="Bahnschrift Light Condensed" FontSize="25" TextAlignment="Center" Background="LightYellow"/>
+            <TextBox Name="TxtName" MinHeight="64" FontFamily="Bahnschrift Light Condensed" FontSize="25" TextAlignment="Center" Background="LightYellow" KeyDown="BaseName_KeyDown"/>
+            <TextBox Name="TxtSurname" MinHeight="64" FontFamily="Bahnschrift Light Condensed" FontSize="25" TextAlignment="Center" Background="LightYellow" KeyDown="BaseName_KeyDown"/>
+            <TextBox Name="TxtPESEL" MinHeight="64" FontFamily="Bahnschrift Light Condensed" FontSize="25" TextAlignment="Center" Background="LightYellow" KeyDown="TxtPESEL_KeyDown"/>
+            <TextBox Name="TxtMotherName" MinHeight="64" FontFamily="Bahnschrift Light Condensed" FontSize="25" TextAlignment="Center" Background="LightYellow" KeyDown="BaseName_KeyDown"/>
+            <TextBox Name="TxtFatherName" MinHeight="64" FontFamily="Bahnschrift Light Condensed" FontSize="25" TextAlignment="Center" Background="LightYellow" KeyDown="BaseName_KeyDown"/>
         </StackPanel>
         <Button Name ="Change" Content="Change" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" FontSize="38" Click="But_Chg_Click" FontFamily="Bahnschrift Light Condensed" Background="Aquamarine" Margin="100,20,100,20"/>
     </Grid>

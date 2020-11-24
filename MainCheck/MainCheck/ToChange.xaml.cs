@@ -55,5 +55,27 @@ namespace MainCheck
                 MainWindow._bazaDanych[i]._imgFile = this._imgFile;
             }
         }
+        private void TxtPESEL_KeyDown(object sender, KeyEventArgs e)
+        {
+            if ((e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9) || (e.Key >= Key.D0 && e.Key < Key.D9))
+            {
+
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void BaseName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key >= Key.A && e.Key <= Key.Z)
+            {
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

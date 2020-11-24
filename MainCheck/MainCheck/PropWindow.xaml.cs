@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -24,6 +25,7 @@ namespace MainCheck
         public PropWindow()
         {
             InitializeComponent();
+            TxtPESEL.MaxLength = 11;
         }
         private void But_Add_Click(object sender, RoutedEventArgs e)
         {
@@ -66,6 +68,29 @@ namespace MainCheck
             catch
             {
 
+            }
+        }
+
+        private void TxtPESEL_KeyDown(object sender, KeyEventArgs e)
+        {
+            if ((e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9) || (e.Key >= Key.D0 && e.Key < Key.D9 ))
+            {
+
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void BaseName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key >= Key.A && e.Key <= Key.Z)
+            {
+            }
+            else
+            {
+                e.Handled = true;
             }
         }
     }

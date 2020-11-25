@@ -36,6 +36,7 @@ namespace MainCheck
             TxtFatherName.Text = FatherName;
             this.i = i;
             this._imgFile = _imgFile;
+            TxtPESEL.MaxLength = 11;
         }
 
         private void But_Chg_Click(object sender, RoutedEventArgs e)

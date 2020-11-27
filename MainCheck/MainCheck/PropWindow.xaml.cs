@@ -36,9 +36,19 @@ namespace MainCheck
             string _MotherName;
             string _FatherName;
             Image _image = new Image();
+            bool txtIsNotClean = false;
+            bool txtIsValue = false;
             try
             {
-                if (!String.IsNullOrEmpty(TxtName.Text) && !String.IsNullOrWhiteSpace(TxtName.Text) && !String.IsNullOrEmpty(TxtSurname.Text) && !String.IsNullOrWhiteSpace(TxtSurname.Text) && !String.IsNullOrEmpty(TxtPESEL.Text) && !String.IsNullOrWhiteSpace(TxtPESEL.Text) && !String.IsNullOrEmpty(TxtMotherName.Text) && !String.IsNullOrWhiteSpace(TxtMotherName.Text) && !String.IsNullOrEmpty(TxtFatherName.Text) && !String.IsNullOrWhiteSpace(TxtFatherName.Text) && TxtPESEL.Text.Length == 11)
+                if (!String.IsNullOrEmpty(TxtName.Text) && !String.IsNullOrWhiteSpace(TxtName.Text) && !String.IsNullOrEmpty(TxtSurname.Text) && !String.IsNullOrWhiteSpace(TxtSurname.Text) && !String.IsNullOrEmpty(TxtPESEL.Text) && !String.IsNullOrWhiteSpace(TxtPESEL.Text) && !String.IsNullOrEmpty(TxtMotherName.Text) && !String.IsNullOrWhiteSpace(TxtMotherName.Text) && !String.IsNullOrEmpty(TxtFatherName.Text) && !String.IsNullOrWhiteSpace(TxtFatherName.Text))
+                {
+                    txtIsNotClean = true;
+                }
+                if (TxtPESEL.Text.Length == 11)
+                {
+                    txtIsValue = true;
+                }
+                if (txtIsNotClean && txtIsValue)
                 {
                     _Name = TxtName.Text;
                     _Surname = TxtSurname.Text;

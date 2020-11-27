@@ -110,7 +110,7 @@ namespace MainCheck
             {
                 WarningPesel.Content = "PESEL must have 11 numbers";
             }
-            else if (TxtPESEL.Text.Length == 11)
+            else if (TxtPESEL.Text.Length == 11 || TxtPESEL.Text.Length == 0)
             {
                 WarningPesel.Content = "";
             }

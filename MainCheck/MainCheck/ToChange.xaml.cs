@@ -78,5 +78,65 @@ namespace MainCheck
                 e.Handled = true;
             }
         }
+        private void TxtPESEL_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (TxtPESEL.Text.Length == 11 || TxtPESEL.Text.Length == 0)
+            {
+                WarningPesel.Content = "";
+            }
+            else if (TxtPESEL.Text.Length < 11)
+            {
+                WarningPesel.Content = "PESEL must have 11 numbers";
+            }
+        }
+        private void BaseName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            object label = labels(textBox.Name);
+            string war = "";
+            if (textBox.Text.Length > 3 || textBox.Text.Length == 0)
+            {
+                war = "";
+                Warnings(textBox.Name, war);
+            }
+            else if (textBox.Text.Length < 3)
+            {
+                war = label + " must have at least 3 letters";
+                Warnings(textBox.Name, war);
+            }
+        }
+        private void Warnings(object textbox, string war)
+        {
+            switch (textbox)
+            {
+                case "TxtName":
+                    WarningName.Content = war;
+                    break;
+                case "TxtSurname":
+                    WarningSurname.Content = war;
+                    break;
+                case "TxtMotherName":
+                    WarningMotherName.Content = war;
+                    break;
+                case "TxtFatherName":
+                    WarningFatherName.Content = war;
+                    break;
+            }
+        }
+        private object labels(object textbox)
+        {
+            switch (textbox)
+            {
+                case "TxtName":
+                    return LName.Content;
+                case "TxtSurname":
+                    return LSurname.Content;
+                case "TxtMotherName":
+                    return LMotherName.Content;
+                case "TxtFatherName":
+                    return LFatherName.Content;
+            }
+            return null;
+        }
     }
 }

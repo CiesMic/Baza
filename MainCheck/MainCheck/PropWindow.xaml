@@ -29,10 +29,11 @@
         <!--#region TextBoxes-->
         <TextBox Name="TxtName" MinHeight="64" Grid.Column="1" Grid.Row="0" FontFamily="Bahnschrift Light Condensed" FontSize="25" TextAlignment="Center" Background="LightYellow" KeyDown="BaseName_KeyDown"/>
         <TextBox Name="TxtSurname" MinHeight="64" Grid.Column="1" Grid.Row="1" FontFamily="Bahnschrift Light Condensed" FontSize="25" TextAlignment="Center" Background="LightYellow" KeyDown="BaseName_KeyDown"/>
-        <TextBox Name="TxtPESEL" MinHeight="64" Grid.Column="1" Grid.Row="2" FontFamily="Bahnschrift Light Condensed" FontSize="25" TextAlignment="Center" Background="LightYellow" KeyDown="TxtPESEL_KeyDown"/>
+        <TextBox Name="TxtPESEL" MinHeight="64" Grid.Column="1" Grid.Row="2" FontFamily="Bahnschrift Light Condensed" FontSize="25" TextAlignment="Center" Background="LightYellow" KeyDown="TxtPESEL_KeyDown" TextChanged="TxtPESEL_TextChanged"/>
         <TextBox Name="TxtMotherName" MinHeight="64" Grid.Column="1" Grid.Row="3" FontFamily="Bahnschrift Light Condensed" FontSize="25" TextAlignment="Center" Background="LightYellow" KeyDown="BaseName_KeyDown"/>
         <TextBox Name="TxtFatherName" MinHeight="64" Grid.Column="1" Grid.Row="4" FontFamily="Bahnschrift Light Condensed" FontSize="25" TextAlignment="Center" Background="LightYellow" KeyDown="BaseName_KeyDown"/>
         <!--#endregion-->
+        <Label Name="WarningPesel" Grid.Column="1" Grid.Row="2" Content="" FontFamily="Bahnschrift Light Condensed" FontSize="20" HorizontalContentAlignment="Right" VerticalAlignment="Bottom" Foreground="Orange" IsHitTestVisible="False"/>
         <Button Name ="But_Add" Content="Add" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2" FontSize="38" Click="But_Add_Click" FontFamily="Bahnschrift Light Condensed" Background="Aquamarine" Margin="100,20,100,20"/>
     </Grid>
 </Window>

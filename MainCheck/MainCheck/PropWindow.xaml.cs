@@ -38,7 +38,7 @@ namespace MainCheck
             Image _image = new Image();
             try
             {
-                if (!String.IsNullOrEmpty(TxtName.Text) && !String.IsNullOrWhiteSpace(TxtName.Text) && !String.IsNullOrEmpty(TxtSurname.Text) && !String.IsNullOrWhiteSpace(TxtSurname.Text) && !String.IsNullOrEmpty(TxtPESEL.Text) && !String.IsNullOrWhiteSpace(TxtPESEL.Text) && !String.IsNullOrEmpty(TxtMotherName.Text) && !String.IsNullOrWhiteSpace(TxtMotherName.Text) && !String.IsNullOrEmpty(TxtFatherName.Text) && !String.IsNullOrWhiteSpace(TxtFatherName.Text))
+                if (!String.IsNullOrEmpty(TxtName.Text) && !String.IsNullOrWhiteSpace(TxtName.Text) && !String.IsNullOrEmpty(TxtSurname.Text) && !String.IsNullOrWhiteSpace(TxtSurname.Text) && !String.IsNullOrEmpty(TxtPESEL.Text) && !String.IsNullOrWhiteSpace(TxtPESEL.Text) && !String.IsNullOrEmpty(TxtMotherName.Text) && !String.IsNullOrWhiteSpace(TxtMotherName.Text) && !String.IsNullOrEmpty(TxtFatherName.Text) && !String.IsNullOrWhiteSpace(TxtFatherName.Text) && TxtPESEL.Text.Length == 11)
                 {
                     _Name = TxtName.Text;
                     _Surname = TxtSurname.Text;
@@ -91,6 +91,18 @@ namespace MainCheck
             else
             {
                 e.Handled = true;
+            }
+        }
+
+        private void TxtPESEL_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (TxtPESEL.Text.Length < 11)
+            {
+                WarningPesel.Content = "PESEL must have 11 numbers";
+            }
+            else if (TxtPESEL.Text.Length == 11)
+            {
+                WarningPesel.Content = "";
             }
         }
     }

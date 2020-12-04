@@ -97,7 +97,7 @@ namespace MainCheck
             }
         }
 
-        private void Sql_Connection_But_Click(object sender, RoutedEventArgs e)
+        private void Sql_Read_But_Click(object sender, RoutedEventArgs e)
         {
             string connectionString;
             SqlConnection cnn;
@@ -106,15 +106,30 @@ namespace MainCheck
             try
             {
                 cnn.Open();
+                string query = "SELECT * FROM [Baza].[dbo].[Base]";
+                using (SqlCommand command = new SqlCommand(query, cnn))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Baza _baza = new Baza();
+                            _baza.Name = (string)reader["Name"];
+                            _baza.Surname = (string)reader["Surname"];
+                            _baza.PESEL = Convert.ToInt64(reader["PESEL"]);
+                            _baza.MotherName = (string)reader["MotherName"];
+                            _baza.FatherName = (string)reader["FatherName"];
+                            _baza._imgFile = (string)reader["_imgFile"];
+                            _bazaDanych.Add(_baza);
+                        }
+                    }
+                }
                 cnn.Close();
+                Refresh();
             }
             catch
             {
-                Sql_Connection_But.Foreground = Brushes.Red;
-            }
-            finally
-            {
-                Sql_Connection_But.Foreground = Brushes.LawnGreen;
+                MessageBox.Show("It doesn't work properly", "Read");
             }
         }
     }

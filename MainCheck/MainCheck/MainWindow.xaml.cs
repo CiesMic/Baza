@@ -29,8 +29,7 @@ namespace MainCheck
         public static List<Baza> _bazaDanych = new List<Baza>();
         public MainWindow()
         {
-            InitializeComponent();
-            Connect();
+            InitializeComponent();;
         }
         private void WriteFirstRow()
         {
@@ -97,15 +96,26 @@ namespace MainCheck
                 change.Show();
             }
         }
-        private void Connect()
+
+        private void Sql_Connection_But_Click(object sender, RoutedEventArgs e)
         {
             string connectionString;
             SqlConnection cnn;
             connectionString = @"Data Source=DESKTOP-DELC1R0\MATRIXSERVER;Initial Catalog=Baza;User ID=sa;Password=AlgorytmDjikstry";
             cnn = new SqlConnection(connectionString);
-            cnn.Open();
-            MessageBox.Show("Connection Open  !");
-            cnn.Close();
+            try
+            {
+                cnn.Open();
+                cnn.Close();
+            }
+            catch
+            {
+                Sql_Connection_But.Foreground = Brushes.Red;
+            }
+            finally
+            {
+                Sql_Connection_But.Foreground = Brushes.LawnGreen;
+            }
         }
     }
 }

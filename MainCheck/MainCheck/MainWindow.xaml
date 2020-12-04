@@ -25,6 +25,7 @@
         <Button Name="ChangeBtn" Content="Change" Grid.Column="2" Grid.Row="1" VerticalAlignment="Bottom" FontSize="35" FontFamily="Bahnschrift Light Condensed" Background="Gold" Margin="5,0,5,0" Click="ChangeBtn_Click"/>
         <Button Name="Deserial" Content="Deserialize" Grid.Column="3" Grid.Row="1" VerticalAlignment="Bottom" FontSize="35" FontFamily="Bahnschrift Light Condensed" Background="Azure" Click="Deserial_Click"/>
         <Button Name="But_Refresh" Margin="2,0,10,2" Content="Refresh" Grid.Column="0" Grid.Row="1" VerticalAlignment="Bottom" MinHeight="50" MinWidth="100" Click="But_Refresh_Click" FontSize="35" FontFamily="Bahnschrift Light Condensed" Background="Bisque"/>
+        <Button Name="Sql_Connection_But" Grid.Column="5" Grid.Row="0" VerticalAlignment="Top" MinHeight="50" MinWidth="100" Margin="10,0,0,0" Background="Orange" Content="Connect" FontSize="35" FontFamily="Bahnschrift Light Condensed" Click="Sql_Connection_But_Click"/>
         <ListView FontSize="20" FontFamily="Bahnschrift Light Condensed" Name="WriteList" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="5" Grid.RowSpan="2">
             <ListView.View>
                 <GridView>

@@ -40,7 +40,14 @@ namespace MainCheck
                 {
                     obrazek = new BitmapImage();
                     obrazek.BeginInit();
-                    obrazek.UriSource = new Uri(_imgFile, UriKind.Absolute);
+                    if (_imgFile != null)
+                    {
+                        obrazek.UriSource = new Uri(_imgFile, UriKind.Absolute);
+                    }
+                    else
+                    {
+                        obrazek.UriSource = new Uri(@"C:\Users\zwari\source\repos\Baza\MainCheck\MainCheck\bin\Debug\Pictures\Empty.png", UriKind.Absolute);
+                    }
                     obrazek.EndInit();
                 }
                 return obrazek;

@@ -16,9 +16,6 @@ using System.Windows.Shapes;
 
 namespace MainCheck
 {
-    /// <summary>
-    /// Interaction logic for PropWindow.xaml
-    /// </summary>
     public partial class PropWindow : Window
     {
         Baza _baza;
@@ -164,6 +161,5 @@ namespace MainCheck
             }
             return null;
         }
-
     }
 }

@@ -17,6 +17,7 @@ using System.Xml.Serialization;
 using Microsoft.Win32;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Xml;
+using System.Data.SqlClient;
 
 namespace MainCheck
 {
@@ -29,6 +30,7 @@ namespace MainCheck
         public MainWindow()
         {
             InitializeComponent();
+            Connect();
         }
         private void WriteFirstRow()
         {
@@ -94,6 +96,16 @@ namespace MainCheck
                 ToChange change = new ToChange(Name, Surname, PESEL, MotherName, FatherName, i, _imgFile);
                 change.Show();
             }
+        }
+        private void Connect()
+        {
+            string connectionString;
+            SqlConnection cnn;
+            connectionString = @"Data Source=DESKTOP-DELC1R0\MATRIXSERVER;Initial Catalog=Baza;User ID=sa;Password=AlgorytmDjikstry";
+            cnn = new SqlConnection(connectionString);
+            cnn.Open();
+            MessageBox.Show("Connection Open  !");
+            cnn.Close();
         }
     }
 }

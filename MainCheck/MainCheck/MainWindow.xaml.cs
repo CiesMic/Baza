@@ -137,5 +137,92 @@ namespace MainCheck
                 MessageBox.Show("It doesn't work properly", "Read");
             }
         }
+
+        private void Sql_Add_But_Click(object sender, RoutedEventArgs e)
+        {
+            if (WriteList.SelectedItem != null)
+            {
+                string connectionString;
+                SqlConnection cnn;
+                connectionString = @"Data Source=DESKTOP-DELC1R0\MATRIXSERVER;Initial Catalog=Baza;User ID=sa;Password=AlgorytmDjikstry";
+                cnn = new SqlConnection(connectionString);
+                try
+                {
+                    cnn.Open();
+                    int Id = (WriteList.SelectedItem as Baza).Id;
+                    string Name = (WriteList.SelectedItem as Baza).Name;
+                    string Surname = (WriteList.SelectedItem as Baza).Surname;
+                    long PESEL = Convert.ToInt64((WriteList.SelectedItem as Baza).PESEL);
+                    string MotherName = (WriteList.SelectedItem as Baza).MotherName;
+                    string FatherName = (WriteList.SelectedItem as Baza).FatherName;
+                    string _imgFile = (WriteList.SelectedItem as Baza)._imgFile;
+
+                    string query = "INSERT INTO Base";
+                    query += " VALUES (@Id, @Name, @Surname, @PESEL, @MotherName, @FatherName, @imgFile)";
+
+                    SqlCommand myCommand = new SqlCommand(query, cnn);
+
+                    myCommand.Parameters.AddWithValue("@Id", Id);
+                    myCommand.Parameters.AddWithValue("@Name", Name);
+                    myCommand.Parameters.AddWithValue("@Surname", Surname);
+                    myCommand.Parameters.AddWithValue("@PESEL", PESEL);
+                    myCommand.Parameters.AddWithValue("@MotherName", MotherName);
+                    myCommand.Parameters.AddWithValue("@FatherName", FatherName);
+                    myCommand.Parameters.AddWithValue("@imgFile", _imgFile);
+
+                    myCommand.ExecuteNonQuery();
+
+                    cnn.Close();
+                    Refresh();
+                }
+                catch
+                {
+                    MessageBox.Show("It doesn't work properly", "Add to DB");
+                }
+            }
+        }
+
+        private void Sql_Mod_But_Click(object sender, RoutedEventArgs e)
+        {
+            if (WriteList.SelectedItem != null)
+            {
+                string connectionString;
+                SqlConnection cnn;
+                connectionString = @"Data Source=DESKTOP-DELC1R0\MATRIXSERVER;Initial Catalog=Baza;User ID=sa;Password=AlgorytmDjikstry";
+                cnn = new SqlConnection(connectionString);
+                try
+                {
+                    cnn.Open();
+                    string query = "SELECT * FROM [Baza].[dbo].[Base]";
+                    using (SqlCommand command = new SqlCommand(query, cnn))
+                    {
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                Baza _baza = new Baza
+                                {
+                                    Id = Convert.ToInt32(reader["Id"]),
+                                    Name = (string)reader["Name"],
+                                    Surname = (string)reader["Surname"],
+                                    PESEL = Convert.ToInt64(reader["PESEL"]),
+                                    //_imgFile = '@' + (string)reader["imgFile"],
+                                    _imgFile = @"C:\Users\zwari\source\repos\Baza\MainCheck\MainCheck\bin\Debug\Pictures\Empty.png",
+                                    MotherName = (string)reader["MotherName"],
+                                    FatherName = (string)reader["FatherName"]
+                                };
+                                _bazaDanych.Add(_baza);
+                            }
+                        }
+                    }
+                    cnn.Close();
+                    Refresh();
+                }
+                catch
+                {
+                    MessageBox.Show("It doesn't work properly", "Add to DB");
+                }
+            }
+        }
     }
 }

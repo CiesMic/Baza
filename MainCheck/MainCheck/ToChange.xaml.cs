@@ -38,7 +38,6 @@ namespace MainCheck
             this.i = i;
             this._imgFile = _imgFile;
             TxtPESEL.MaxLength = 11;
-            TxtId.Text = Convert.ToString(MainWindow._bazaDanych.Count + 1);
             TxtId.IsEnabled = false;
         }
 

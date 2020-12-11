@@ -35,9 +35,9 @@ namespace MainCheck
         {
             _bazaDanych.AddRange(new Baza[]
             {
-            new Baza("Mikolaj", "Kopernik", 8520147410, Environment.CurrentDirectory + "\\Pictures\\Empty.png" , "Angelika", "Pawel"),
-            new Baza("Kacper", "Qwerty", 23052062148, Environment.CurrentDirectory + "\\Pictures\\Empty.png", "Paulina", "Adam"),
-            new Baza("Zenom", "Karynia", 03526252892, Environment.CurrentDirectory + "\\Pictures\\Empty.png", "Julka", "Stanislaw"),
+            new Baza(_bazaDanych.Count + 1,"Mikolaj", "Kopernik", 8520147410, Environment.CurrentDirectory + "\\Pictures\\Empty.png" , "Angelika", "Pawel"),
+            new Baza(_bazaDanych.Count + 1,"Kacper", "Qwerty", 23052062148, Environment.CurrentDirectory + "\\Pictures\\Empty.png", "Paulina", "Adam"),
+            new Baza(_bazaDanych.Count + 1,"Zenom", "Karynia", 03526252892, Environment.CurrentDirectory + "\\Pictures\\Empty.png", "Julka", "Stanislaw"),
         });
             Refresh();
         }
@@ -85,6 +85,7 @@ namespace MainCheck
         {
             if (WriteList.SelectedItem != null)
             {
+                int Id = (WriteList.SelectedItem as Baza).Id;
                 string Name = (WriteList.SelectedItem as Baza).Name;
                 string Surname = (WriteList.SelectedItem as Baza).Surname;
                 long PESEL = Convert.ToInt64((WriteList.SelectedItem as Baza).PESEL);
@@ -92,7 +93,7 @@ namespace MainCheck
                 string FatherName = (WriteList.SelectedItem as Baza).FatherName;
                 string _imgFile = (WriteList.SelectedItem as Baza)._imgFile;
                 int i = WriteList.SelectedIndex;
-                ToChange change = new ToChange(Name, Surname, PESEL, MotherName, FatherName, i, _imgFile);
+                ToChange change = new ToChange(Id, Name, Surname, PESEL, MotherName, FatherName, i, _imgFile);
                 change.Show();
             }
         }
@@ -113,13 +114,17 @@ namespace MainCheck
                     {
                         while (reader.Read())
                         {
-                            Baza _baza = new Baza();
-                            _baza.Name = (string)reader["Name"];
-                            _baza.Surname = (string)reader["Surname"];
-                            _baza.PESEL = Convert.ToInt64(reader["PESEL"]);
-                            _baza.MotherName = (string)reader["MotherName"];
-                            _baza.FatherName = (string)reader["FatherName"];
-                            _baza._imgFile = (string)reader["_imgFile"];
+                            Baza _baza = new Baza
+                            {
+                                Id = Convert.ToInt32(reader["Id"]),
+                                Name = (string)reader["Name"],
+                                Surname = (string)reader["Surname"],
+                                PESEL = Convert.ToInt64(reader["PESEL"]),
+                                //_imgFile = '@' + (string)reader["imgFile"],
+                                _imgFile = @"C:\Users\zwari\source\repos\Baza\MainCheck\MainCheck\bin\Debug\Pictures\Empty.png",
+                                MotherName = (string)reader["MotherName"],
+                                FatherName = (string)reader["FatherName"]
+                            };
                             _bazaDanych.Add(_baza);
                         }
                     }

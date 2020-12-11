@@ -14,6 +14,7 @@ namespace MainCheck
     [Serializable]
     public class Baza
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
         public long PESEL { get; set; }
@@ -22,6 +23,7 @@ namespace MainCheck
         public string FatherName { get; set; }
         public Baza()
         {
+            Id = 0;
             Name = " ";
             Surname = " ";
             PESEL = 0;
@@ -40,14 +42,7 @@ namespace MainCheck
                 {
                     obrazek = new BitmapImage();
                     obrazek.BeginInit();
-                    if (_imgFile != null)
-                    {
-                        obrazek.UriSource = new Uri(_imgFile, UriKind.Absolute);
-                    }
-                    else
-                    {
-                        obrazek.UriSource = new Uri(@"C:\Users\zwari\source\repos\Baza\MainCheck\MainCheck\bin\Debug\Pictures\Empty.png", UriKind.Absolute);
-                    }
+                    obrazek.UriSource = new Uri(_imgFile, UriKind.Absolute);
                     obrazek.EndInit();
                 }
                 return obrazek;
@@ -73,8 +68,9 @@ namespace MainCheck
                 obrazek.UriSource = value;
             }
         }
-        public Baza(string Name, string Surname, long PESEL, string _imgFile, string MotherName, string FatherName)
+        public Baza(int Id, string Name, string Surname, long PESEL, string _imgFile, string MotherName, string FatherName)
         {
+            this.Id = Id;
             this.Name = Name;
             this.Surname = Surname;
             this.PESEL = PESEL;

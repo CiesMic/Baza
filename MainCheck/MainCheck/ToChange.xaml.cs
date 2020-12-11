@@ -26,9 +26,10 @@ namespace MainCheck
         {
             InitializeComponent();
         }
-        public ToChange(string Name, string Surname, long PESEL, string MotherName, string FatherName, int i, string _imgFile)
+        public ToChange(int Id, string Name, string Surname, long PESEL, string MotherName, string FatherName, int i, string _imgFile)
         {
             InitializeComponent();
+            TxtId.Text = Convert.ToString(Id);
             TxtName.Text = Name;
             TxtSurname.Text = Surname;
             TxtPESEL.Text = Convert.ToString(PESEL);
@@ -37,10 +38,13 @@ namespace MainCheck
             this.i = i;
             this._imgFile = _imgFile;
             TxtPESEL.MaxLength = 11;
+            TxtId.Text = Convert.ToString(MainWindow._bazaDanych.Count + 1);
+            TxtId.IsEnabled = false;
         }
 
         private void But_Chg_Click(object sender, RoutedEventArgs e)
         {
+            MainWindow._bazaDanych[i].Id = Convert.ToInt32(TxtId.Text);
             MainWindow._bazaDanych[i].Name = TxtName.Text;
             MainWindow._bazaDanych[i].Surname = TxtSurname.Text;
             MainWindow._bazaDanych[i].PESEL = Convert.ToInt64(TxtPESEL.Text);
@@ -58,7 +62,7 @@ namespace MainCheck
         }
         private void TxtPESEL_KeyDown(object sender, KeyEventArgs e)
         {
-            if ((e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9) || (e.Key >= Key.D0 && e.Key < Key.D9))
+            if ((e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9) || (e.Key >= Key.D0 && e.Key <= Key.D9))
             {
 
             }
@@ -87,6 +91,14 @@ namespace MainCheck
             else if (TxtPESEL.Text.Length < 11)
             {
                 WarningPesel.Content = "PESEL must have 11 numbers";
+            }
+            if (TxtId.Text.Length > 0)
+            {
+                WarningId.Content = "";
+            }
+            else if (TxtId.Text.Length <= 0)
+            {
+                WarningId.Content = "Id is too short";
             }
         }
         private void BaseName_TextChanged(object sender, TextChangedEventArgs e)

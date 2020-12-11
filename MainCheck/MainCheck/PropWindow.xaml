@@ -12,34 +12,38 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.7*"/>
-            <RowDefinition Height="0.7*"/>
-            <RowDefinition Height="0.7*"/>
-            <RowDefinition Height="0.7*"/>
-            <RowDefinition Height="0.7*"/>
-            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="1.2*"/>
         </Grid.RowDefinitions>
         <!--#region Labels-->
-        <Label Name="LName" Grid.Column="0" Grid.Row="0" MinHeight="64" Content="Name: " FontFamily="Bahnschrift Light Condensed" FontSize="45"/>
-        <Label Name="LSurname" MinHeight="64" Grid.Column="0" Grid.Row="1" Content="Surname: " FontFamily="Bahnschrift Light Condensed" FontSize="45"/>
-        <Label Name="LPESEL" MinHeight="64" Grid.Column="0" Grid.Row="2" Content="PESEL: " FontFamily="Bahnschrift Light Condensed" FontSize="45"/>
-        <Label Name="LMotherName" MinHeight="64" Grid.Column="0" Grid.Row="3" Content="MotherName: " FontFamily="Bahnschrift Light Condensed" FontSize="45"/>
-        <Label Name="LFatherName" Grid.Column="0" Grid.Row="4" MinHeight="64" Content="FatherName: " FontFamily="Bahnschrift Light Condensed" FontSize="45"/>
+        <Label Name="LId" Grid.Column="0" Grid.Row="0" MinHeight="64" Content="Id: " FontFamily="Bahnschrift Light Condensed" FontSize="45"/>
+        <Label Name="LName" Grid.Column="0" Grid.Row="1" MinHeight="64" Content="Name: " FontFamily="Bahnschrift Light Condensed" FontSize="45"/>
+        <Label Name="LSurname" MinHeight="64" Grid.Column="0" Grid.Row="2" Content="Surname: " FontFamily="Bahnschrift Light Condensed" FontSize="45"/>
+        <Label Name="LPESEL" MinHeight="64" Grid.Column="0" Grid.Row="3" Content="PESEL: " FontFamily="Bahnschrift Light Condensed" FontSize="45"/>
+        <Label Name="LMotherName" MinHeight="64" Grid.Column="0" Grid.Row="4" Content="MotherName: " FontFamily="Bahnschrift Light Condensed" FontSize="45"/>
+        <Label Name="LFatherName" Grid.Column="0" Grid.Row="5" MinHeight="64" Content="FatherName: " FontFamily="Bahnschrift Light Condensed" FontSize="45"/>
         <!--#endregion-->
         <!--#region TextBoxes-->
-        <TextBox Name="TxtName" MinHeight="64" Grid.Column="1" Grid.Row="0" FontFamily="Bahnschrift Light Condensed" FontSize="25" TextAlignment="Center" Background="LightYellow" KeyDown="BaseName_KeyDown" TextChanged="BaseName_TextChanged"/>
-        <TextBox Name="TxtSurname" MinHeight="64" Grid.Column="1" Grid.Row="1" FontFamily="Bahnschrift Light Condensed" FontSize="25" TextAlignment="Center" Background="LightYellow" KeyDown="BaseName_KeyDown" TextChanged="BaseName_TextChanged"/>
-        <TextBox Name="TxtPESEL" MinHeight="64" Grid.Column="1" Grid.Row="2" FontFamily="Bahnschrift Light Condensed" FontSize="25" TextAlignment="Center" Background="LightYellow" KeyDown="TxtPESEL_KeyDown" TextChanged="TxtPESEL_TextChanged"/>
-        <TextBox Name="TxtMotherName" MinHeight="64" Grid.Column="1" Grid.Row="3" FontFamily="Bahnschrift Light Condensed" FontSize="25" TextAlignment="Center" Background="LightYellow" KeyDown="BaseName_KeyDown" TextChanged="BaseName_TextChanged"/>
-        <TextBox Name="TxtFatherName" MinHeight="64" Grid.Column="1" Grid.Row="4" FontFamily="Bahnschrift Light Condensed" FontSize="25" TextAlignment="Center" Background="LightYellow" KeyDown="BaseName_KeyDown" TextChanged="BaseName_TextChanged"/>
+        <TextBox Name="TxtId" MinHeight="64" Grid.Column="1" Grid.Row="0" FontFamily="Bahnschrift Light Condensed" FontSize="25" TextAlignment="Center" Background="LightYellow" KeyDown="TxtPESEL_KeyDown" TextChanged="TxtPESEL_TextChanged"/>
+        <TextBox Name="TxtName" MinHeight="64" Grid.Column="1" Grid.Row="1" FontFamily="Bahnschrift Light Condensed" FontSize="25" TextAlignment="Center" Background="LightYellow" KeyDown="BaseName_KeyDown" TextChanged="BaseName_TextChanged"/>
+        <TextBox Name="TxtSurname" MinHeight="64" Grid.Column="1" Grid.Row="2" FontFamily="Bahnschrift Light Condensed" FontSize="25" TextAlignment="Center" Background="LightYellow" KeyDown="BaseName_KeyDown" TextChanged="BaseName_TextChanged"/>
+        <TextBox Name="TxtPESEL" MinHeight="64" Grid.Column="1" Grid.Row="3" FontFamily="Bahnschrift Light Condensed" FontSize="25" TextAlignment="Center" Background="LightYellow" KeyDown="TxtPESEL_KeyDown" TextChanged="TxtPESEL_TextChanged"/>
+        <TextBox Name="TxtMotherName" MinHeight="64" Grid.Column="1" Grid.Row="4" FontFamily="Bahnschrift Light Condensed" FontSize="25" TextAlignment="Center" Background="LightYellow" KeyDown="BaseName_KeyDown" TextChanged="BaseName_TextChanged"/>
+        <TextBox Name="TxtFatherName" MinHeight="64" Grid.Column="1" Grid.Row="5" FontFamily="Bahnschrift Light Condensed" FontSize="25" TextAlignment="Center" Background="LightYellow" KeyDown="BaseName_KeyDown" TextChanged="BaseName_TextChanged"/>
         <!--#endregion-->
         <!--#region Warnings-->
-        <Label Name="WarningName" Grid.Column="1" Grid.Row="0" Content="" FontFamily="Bahnschrift Light Condensed" FontSize="15" HorizontalContentAlignment="Right" VerticalAlignment="Bottom" Foreground="Orange" IsHitTestVisible="False"/>
-        <Label Name="WarningSurname" Grid.Column="1" Grid.Row="1" Content="" FontFamily="Bahnschrift Light Condensed" FontSize="15" HorizontalContentAlignment="Right" VerticalAlignment="Bottom" Foreground="Orange" IsHitTestVisible="False"/>
-        <Label Name="WarningPesel" Grid.Column="1" Grid.Row="2" Content="" FontFamily="Bahnschrift Light Condensed" FontSize="15" HorizontalContentAlignment="Right" VerticalAlignment="Bottom" Foreground="Orange" IsHitTestVisible="False"/>
-        <Label Name="WarningMotherName" Grid.Column="1" Grid.Row="3" Content="" FontFamily="Bahnschrift Light Condensed" FontSize="15" HorizontalContentAlignment="Right" VerticalAlignment="Bottom" Foreground="Orange" IsHitTestVisible="False"/>
-        <Label Name="WarningFatherName" Grid.Column="1" Grid.Row="4" Content="" FontFamily="Bahnschrift Light Condensed" FontSize="15" HorizontalContentAlignment="Right" VerticalAlignment="Bottom" Foreground="Orange" IsHitTestVisible="False"/>
+        <Label Name="WarningId" Grid.Column="1" Grid.Row="0" Content="" FontFamily="Bahnschrift Light Condensed" FontSize="15" HorizontalContentAlignment="Right" VerticalAlignment="Bottom" Foreground="Orange" IsHitTestVisible="False"/>
+        <Label Name="WarningName" Grid.Column="1" Grid.Row="1" Content="" FontFamily="Bahnschrift Light Condensed" FontSize="15" HorizontalContentAlignment="Right" VerticalAlignment="Bottom" Foreground="Orange" IsHitTestVisible="False"/>
+        <Label Name="WarningSurname" Grid.Column="1" Grid.Row="2" Content="" FontFamily="Bahnschrift Light Condensed" FontSize="15" HorizontalContentAlignment="Right" VerticalAlignment="Bottom" Foreground="Orange" IsHitTestVisible="False"/>
+        <Label Name="WarningPesel" Grid.Column="1" Grid.Row="3" Content="" FontFamily="Bahnschrift Light Condensed" FontSize="15" HorizontalContentAlignment="Right" VerticalAlignment="Bottom" Foreground="Orange" IsHitTestVisible="False"/>
+        <Label Name="WarningMotherName" Grid.Column="1" Grid.Row="4" Content="" FontFamily="Bahnschrift Light Condensed" FontSize="15" HorizontalContentAlignment="Right" VerticalAlignment="Bottom" Foreground="Orange" IsHitTestVisible="False"/>
+        <Label Name="WarningFatherName" Grid.Column="1" Grid.Row="5" Content="" FontFamily="Bahnschrift Light Condensed" FontSize="15" HorizontalContentAlignment="Right" VerticalAlignment="Bottom" Foreground="Orange" IsHitTestVisible="False"/>
         <!--#endregion-->
-        <Button Name ="But_Add" Content="Add" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2" FontSize="38" Click="But_Add_Click" FontFamily="Bahnschrift Light Condensed" Background="Aquamarine" Margin="100,20,100,20"/>
+        <Button Name ="But_Add" Content="Add" Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="2" FontSize="38" Click="But_Add_Click" FontFamily="Bahnschrift Light Condensed" Background="Aquamarine" Margin="100,20,100,20"/>
     </Grid>
 </Window>

@@ -23,9 +23,12 @@ namespace MainCheck
         {
             InitializeComponent();
             TxtPESEL.MaxLength = 11;
+            TxtId.IsEnabled = false;
+            TxtId.Text = Convert.ToString(MainWindow._bazaDanych.Count + 1);
         }
         private void But_Add_Click(object sender, RoutedEventArgs e)
         {
+            int _Id;
             string _Name;
             string _Surname;
             long _PESEL;
@@ -37,16 +40,17 @@ namespace MainCheck
             bool txtIsValue = false;
             try
             {
-                if (!String.IsNullOrEmpty(TxtName.Text) && !String.IsNullOrWhiteSpace(TxtName.Text) && !String.IsNullOrEmpty(TxtSurname.Text) && !String.IsNullOrWhiteSpace(TxtSurname.Text) && !String.IsNullOrEmpty(TxtPESEL.Text) && !String.IsNullOrWhiteSpace(TxtPESEL.Text) && !String.IsNullOrEmpty(TxtMotherName.Text) && !String.IsNullOrWhiteSpace(TxtMotherName.Text) && !String.IsNullOrEmpty(TxtFatherName.Text) && !String.IsNullOrWhiteSpace(TxtFatherName.Text))
+                if (!String.IsNullOrEmpty(TxtId.Text) && !String.IsNullOrWhiteSpace(TxtId.Text) && !String.IsNullOrEmpty(TxtName.Text) && !String.IsNullOrWhiteSpace(TxtName.Text) && !String.IsNullOrEmpty(TxtSurname.Text) && !String.IsNullOrWhiteSpace(TxtSurname.Text) && !String.IsNullOrEmpty(TxtPESEL.Text) && !String.IsNullOrWhiteSpace(TxtPESEL.Text) && !String.IsNullOrEmpty(TxtMotherName.Text) && !String.IsNullOrWhiteSpace(TxtMotherName.Text) && !String.IsNullOrEmpty(TxtFatherName.Text) && !String.IsNullOrWhiteSpace(TxtFatherName.Text))
                 {
                     txtIsNotClean = true;
                 }
-                if (TxtPESEL.Text.Length == 11 && TxtName.Text.Length > 3 && TxtSurname.Text.Length > 3 && TxtMotherName.Text.Length > 3 && TxtFatherName.Text.Length > 3)
+                if (TxtId.Text.Length > 0 && TxtPESEL.Text.Length == 11 && TxtName.Text.Length > 3 && TxtSurname.Text.Length > 3 && TxtMotherName.Text.Length > 3 && TxtFatherName.Text.Length > 3)
                 {
                     txtIsValue = true;
                 }
                 if (txtIsNotClean && txtIsValue)
                 {
+                    _Id = Convert.ToInt32(TxtId.Text);
                     _Name = TxtName.Text;
                     _Surname = TxtSurname.Text;
                     _PESEL = Convert.ToInt64(TxtPESEL.Text);
@@ -63,7 +67,7 @@ namespace MainCheck
                     {
                         _imgFile = @"C:\Users\zwari\source\repos\Baza\MainCheck\MainCheck\bin\Debug\Pictures\Empty.png";
                     }
-                    _baza = new Baza(_Name, _Surname, _PESEL, _imgFile, _MotherName, _FatherName);
+                    _baza = new Baza(_Id, _Name, _Surname, _PESEL, _imgFile, _MotherName, _FatherName);
                     MainWindow._bazaDanych.Add(_baza);
                     TxtName.Text = "";
                     TxtSurname.Text = "";
@@ -110,6 +114,14 @@ namespace MainCheck
             else if (TxtPESEL.Text.Length < 11)
             {
                 WarningPesel.Content = "PESEL must have 11 numbers";
+            }
+            if (TxtId.Text.Length > 0)
+            {
+                WarningId.Content = "";
+            }
+            else if (TxtId.Text.Length <= 0)
+            {
+                WarningId.Content = "Id is too short";
             }
         }
         private void BaseName_TextChanged(object sender, TextChangedEventArgs e)

@@ -120,8 +120,7 @@ namespace MainCheck
                                 Name = (string)reader["Name"],
                                 Surname = (string)reader["Surname"],
                                 PESEL = Convert.ToInt64(reader["PESEL"]),
-                                //_imgFile = '@' + (string)reader["imgFile"],
-                                _imgFile = @"C:\Users\zwari\source\repos\Baza\MainCheck\MainCheck\bin\Debug\Pictures\Empty.png",
+                                _imgFile = (string)reader["imgFile"],
                                 MotherName = (string)reader["MotherName"],
                                 FatherName = (string)reader["FatherName"]
                             };
@@ -132,9 +131,9 @@ namespace MainCheck
                 cnn.Close();
                 Refresh();
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("It doesn't work properly", "Read");
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -175,9 +174,9 @@ namespace MainCheck
                     cnn.Close();
                     Refresh();
                 }
-                catch
+                catch (Exception ex)
                 {
-                    MessageBox.Show("It doesn't work properly", "Add to DB");
+                    MessageBox.Show(ex.Message);
                 }
             }
         }

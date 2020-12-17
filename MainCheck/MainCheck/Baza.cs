@@ -42,6 +42,10 @@ namespace MainCheck
                 {
                     obrazek = new BitmapImage();
                     obrazek.BeginInit();
+                    if (_imgFile.Equals(""))
+                    {
+                        _imgFile = @"C:\Users\zwari\source\repos\Baza\MainCheck\MainCheck\bin\Debug\Pictures\Empty.png";
+                    }
                     obrazek.UriSource = new Uri(_imgFile, UriKind.Absolute);
                     obrazek.EndInit();
                 }
@@ -57,15 +61,16 @@ namespace MainCheck
         {
             get
             {
-                if (obrazek != null)
+                if (Obraz != null)
                 {
-                    return obrazek.UriSource;
+                    return Obraz.UriSource;
                 }
                 return null;
             }
             set
             {
                 obrazek.UriSource = value;
+                Obraz.UriSource = value;
             }
         }
         public Baza(int Id, string Name, string Surname, long PESEL, string _imgFile, string MotherName, string FatherName)

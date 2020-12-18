@@ -78,6 +78,9 @@ namespace MainCheck
                     case "Update":
                         Update();
                         break;
+                    case "CountAge":
+                        CountAge();
+                        break;
                 }
             }
         }
@@ -257,6 +260,33 @@ namespace MainCheck
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+        private void CountAge()
+        {
+            string result;
+            string tableName = TableName.Text;
+            string connectionString;
+            SqlConnection cnn;
+            connectionString = @"Data Source=DESKTOP-DELC1R0\MATRIXSERVER;Initial Catalog=Baza;User ID=sa;Password=AlgorytmDjikstry";
+            cnn = new SqlConnection(connectionString);
+            try
+            {
+                cnn.Open();
+                string query = "SELECT AVG(Age) FROM " + tableName;
+                using (SqlCommand command = new SqlCommand(query, cnn))
+                {
+                    result = Convert.ToString(command.ExecuteScalar());
+                }
+                cnn.Close();
+                MessageBox.Show(result);
+                SentMessage(tableName);
+                MainWindow.tabName = tableName;
+                Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
             }
         }
         private void SentMessage(string command)

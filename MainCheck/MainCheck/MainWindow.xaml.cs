@@ -31,6 +31,13 @@ namespace MainCheck
         public MainWindow()
         {
             InitializeComponent();
+            Sql_Count.Visibility = Visibility.Hidden;
+            Sql_Add_But.Visibility = Visibility.Hidden;
+            Sql_Create_But.Visibility = Visibility.Hidden;
+            Sql_Update_But.Visibility = Visibility.Hidden;
+            Serial.Visibility = Visibility.Hidden;
+            ChangeBtn.Visibility = Visibility.Hidden;
+            Properties.Visibility = Visibility.Hidden;
         }
         private void WriteFirstRow()
         {
@@ -64,6 +71,10 @@ namespace MainCheck
         protected void But_Refresh_Click(object sender, RoutedEventArgs e)
         {
             Refresh();
+            if(_bazaDanych.Count > 0)
+            {
+                ReadDeserialize();
+            }
         }
         private void Deserial_Click(object sender, RoutedEventArgs e)
         {
@@ -74,6 +85,7 @@ namespace MainCheck
                     XmlSerializer deserializer = new XmlSerializer(typeof(List<Baza>),
                     new XmlRootAttribute("ArrayOfBaza"));
                     _bazaDanych = (List<Baza>)deserializer.Deserialize(reader);
+                    ReadDeserialize();
                 }
             }
             catch
@@ -126,8 +138,28 @@ namespace MainCheck
 
         private void Sql_Create_But_Click(object sender, RoutedEventArgs e)
         {
-            Base tabela = new Base(tabName, "Add Items");
+            if (_bazaDanych.Count > 0)
+            {
+                Base tabela = new Base(tabName, "Add Items");
+                tabela.Show();
+            }
+        }
+
+        private void Sql_Count_Click(object sender, RoutedEventArgs e)
+        {
+            Base tabela = new Base(tabName, "CountAge");
             tabela.Show();
+            Hide();
+        }
+        private void ReadDeserialize()
+        {
+            Sql_Count.Visibility = Visibility.Visible;
+            Sql_Add_But.Visibility = Visibility.Visible;
+            Sql_Create_But.Visibility = Visibility.Visible;
+            Sql_Update_But.Visibility = Visibility.Visible;
+            Serial.Visibility = Visibility.Visible;
+            ChangeBtn.Visibility = Visibility.Visible;
+            Properties.Visibility = Visibility.Visible;
         }
     }
 }

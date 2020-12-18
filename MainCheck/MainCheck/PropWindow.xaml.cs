@@ -36,15 +36,16 @@ namespace MainCheck
             string _MotherName;
             string _FatherName;
             Image _image = new Image();
+            int Age;
             bool txtIsNotClean = false;
             bool txtIsValue = false;
             try
             {
-                if (!String.IsNullOrEmpty(TxtId.Text) && !String.IsNullOrWhiteSpace(TxtId.Text) && !String.IsNullOrEmpty(TxtName.Text) && !String.IsNullOrWhiteSpace(TxtName.Text) && !String.IsNullOrEmpty(TxtSurname.Text) && !String.IsNullOrWhiteSpace(TxtSurname.Text) && !String.IsNullOrEmpty(TxtPESEL.Text) && !String.IsNullOrWhiteSpace(TxtPESEL.Text) && !String.IsNullOrEmpty(TxtMotherName.Text) && !String.IsNullOrWhiteSpace(TxtMotherName.Text) && !String.IsNullOrEmpty(TxtFatherName.Text) && !String.IsNullOrWhiteSpace(TxtFatherName.Text))
+                if (!String.IsNullOrEmpty(TxtId.Text) && !String.IsNullOrWhiteSpace(TxtId.Text) && !String.IsNullOrEmpty(TxtName.Text) && !String.IsNullOrWhiteSpace(TxtName.Text) && !String.IsNullOrEmpty(TxtSurname.Text) && !String.IsNullOrWhiteSpace(TxtSurname.Text) && !String.IsNullOrEmpty(TxtPESEL.Text) && !String.IsNullOrWhiteSpace(TxtPESEL.Text) && !String.IsNullOrEmpty(TxtMotherName.Text) && !String.IsNullOrWhiteSpace(TxtMotherName.Text) && !String.IsNullOrEmpty(TxtFatherName.Text) && !String.IsNullOrWhiteSpace(TxtFatherName.Text) && (!String.IsNullOrEmpty(TxtAge.Text) && !String.IsNullOrWhiteSpace(TxtAge.Text)))
                 {
                     txtIsNotClean = true;
                 }
-                if (TxtId.Text.Length > 0 && TxtPESEL.Text.Length == 11 && TxtName.Text.Length > 3 && TxtSurname.Text.Length > 3 && TxtMotherName.Text.Length > 3 && TxtFatherName.Text.Length > 3)
+                if (TxtId.Text.Length > 0 && TxtPESEL.Text.Length == 11 && TxtName.Text.Length > 3 && TxtSurname.Text.Length > 3 && TxtMotherName.Text.Length > 3 && TxtFatherName.Text.Length > 3 && TxtAge.Text.Length > 0)
                 {
                     txtIsValue = true;
                 }
@@ -56,6 +57,7 @@ namespace MainCheck
                     _PESEL = Convert.ToInt64(TxtPESEL.Text);
                     _MotherName = TxtMotherName.Text;
                     _FatherName = TxtFatherName.Text;
+                    Age = Convert.ToInt32(TxtAge.Text);
                     OpenFileDialog ofd = new OpenFileDialog();
                     ofd.Filter = "(*.BMP;*.JPG;*.GIF)|*.BMP;*.JPG;*.GIF|All files (*.*)|*.*";
                     ofd.Multiselect = false;
@@ -67,13 +69,14 @@ namespace MainCheck
                     {
                         _imgFile = @"C:\Users\zwari\source\repos\Baza\MainCheck\MainCheck\bin\Debug\Pictures\Empty.png";
                     }
-                    _baza = new Baza(_Id, _Name, _Surname, _PESEL, _imgFile, _MotherName, _FatherName);
+                    _baza = new Baza(_Id, _Name, _Surname, _PESEL, _imgFile, _MotherName, _FatherName, Age);
                     MainWindow._bazaDanych.Add(_baza);
                     TxtName.Text = "";
                     TxtSurname.Text = "";
                     TxtPESEL.Text = "";
                     TxtMotherName.Text = "";
                     TxtFatherName.Text = "";
+                    TxtAge.Text = "";
                 }
             }
             catch
@@ -122,6 +125,14 @@ namespace MainCheck
             else if (TxtId.Text.Length <= 0)
             {
                 WarningId.Content = "Id is too short";
+            }
+            if (TxtAge.Text.Length > 0)
+            {
+                WarningAge.Content = "";
+            }
+            else if (TxtAge.Text.Length <= 0)
+            {
+                WarningAge.Content = "Age is too short";
             }
         }
         private void BaseName_TextChanged(object sender, TextChangedEventArgs e)

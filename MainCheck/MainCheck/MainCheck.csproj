@@ -70,12 +70,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Base.xaml.cs">
+      <DependentUpon>Base.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PropWindow.xaml.cs">
       <DependentUpon>PropWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ToChange.xaml.cs">
       <DependentUpon>ToChange.xaml</DependentUpon>
     </Compile>
+    <Page Include="Base.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

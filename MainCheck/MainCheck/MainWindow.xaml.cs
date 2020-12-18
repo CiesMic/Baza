@@ -27,17 +27,18 @@ namespace MainCheck
     public partial class MainWindow : Window
     {
         public static List<Baza> _bazaDanych = new List<Baza>();
+        public static string tabName = "";
         public MainWindow()
         {
-            InitializeComponent();;
+            InitializeComponent();
         }
         private void WriteFirstRow()
         {
             _bazaDanych.AddRange(new Baza[]
             {
-            new Baza(_bazaDanych.Count + 1,"Mikolaj", "Kopernik", 8520147410, Environment.CurrentDirectory + "\\Pictures\\Empty.png" , "Angelika", "Pawel"),
-            new Baza(_bazaDanych.Count + 1,"Kacper", "Qwerty", 23052062148, Environment.CurrentDirectory + "\\Pictures\\Empty.png", "Paulina", "Adam"),
-            new Baza(_bazaDanych.Count + 1,"Zenom", "Karynia", 03526252892, Environment.CurrentDirectory + "\\Pictures\\Empty.png", "Julka", "Stanislaw"),
+            new Baza(_bazaDanych.Count + 1,"Mikolaj", "Kopernik", 8520147410, Environment.CurrentDirectory + "\\Pictures\\Empty.png" , "Angelika", "Pawel", 35),
+            new Baza(_bazaDanych.Count + 1,"Kacper", "Qwerty", 23052062148, Environment.CurrentDirectory + "\\Pictures\\Empty.png", "Paulina", "Adam", 97),
+            new Baza(_bazaDanych.Count + 1,"Zenom", "Karynia", 03526252892, Environment.CurrentDirectory + "\\Pictures\\Empty.png", "Julka", "Stanislaw", 17),
         });
             Refresh();
         }
@@ -46,7 +47,7 @@ namespace MainCheck
             PropWindow _properties = new PropWindow();
             _properties.Show();
         }
-        private void Refresh()
+        public void Refresh()
         {
             WriteList.ItemsSource = "";
             WriteList.ItemsSource = _bazaDanych;
@@ -92,92 +93,25 @@ namespace MainCheck
                 string MotherName = (WriteList.SelectedItem as Baza).MotherName;
                 string FatherName = (WriteList.SelectedItem as Baza).FatherName;
                 string _imgFile = (WriteList.SelectedItem as Baza)._imgFile;
+                int Age = (WriteList.SelectedItem as Baza).Age;
                 int i = WriteList.SelectedIndex;
-                ToChange change = new ToChange(Id, Name, Surname, PESEL, MotherName, FatherName, i, _imgFile);
+                ToChange change = new ToChange(Id, Name, Surname, PESEL, MotherName, FatherName, i, _imgFile, Age);
                 change.Show();
             }
         }
 
         private void Sql_Read_But_Click(object sender, RoutedEventArgs e)
         {
-            string connectionString;
-            SqlConnection cnn;
-            connectionString = @"Data Source=DESKTOP-DELC1R0\MATRIXSERVER;Initial Catalog=Baza;User ID=sa;Password=AlgorytmDjikstry";
-            cnn = new SqlConnection(connectionString);
-            try
-            {
-                cnn.Open();
-                string query = "SELECT * FROM [Baza].[dbo].[Base]";
-                using (SqlCommand command = new SqlCommand(query, cnn))
-                {
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            Baza _baza = new Baza
-                            {
-                                Id = Convert.ToInt32(reader["Id"]),
-                                Name = (string)reader["Name"],
-                                Surname = (string)reader["Surname"],
-                                PESEL = Convert.ToInt64(reader["PESEL"]),
-                                _imgFile = (string)reader["imgFile"],
-                                MotherName = (string)reader["MotherName"],
-                                FatherName = (string)reader["FatherName"]
-                            };
-                            _bazaDanych.Add(_baza);
-                        }
-                    }
-                }
-                cnn.Close();
-                Refresh();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            Base tabela = new Base(tabName, "Read");
+            tabela.Show();
         }
 
         private void Sql_Add_But_Click(object sender, RoutedEventArgs e)
         {
             if (WriteList.SelectedItem != null)
             {
-                string connectionString;
-                SqlConnection cnn;
-                connectionString = @"Data Source=DESKTOP-DELC1R0\MATRIXSERVER;Initial Catalog=Baza;User ID=sa;Password=AlgorytmDjikstry";
-                cnn = new SqlConnection(connectionString);
-                try
-                {
-                    cnn.Open();
-                    int Id = (WriteList.SelectedItem as Baza).Id;
-                    string Name = (WriteList.SelectedItem as Baza).Name;
-                    string Surname = (WriteList.SelectedItem as Baza).Surname;
-                    long PESEL = Convert.ToInt64((WriteList.SelectedItem as Baza).PESEL);
-                    string MotherName = (WriteList.SelectedItem as Baza).MotherName;
-                    string FatherName = (WriteList.SelectedItem as Baza).FatherName;
-                    string _imgFile = (WriteList.SelectedItem as Baza)._imgFile;
-
-                    string query = "INSERT INTO Base";
-                    query += " VALUES (@Id, @Name, @Surname, @PESEL, @MotherName, @FatherName, @imgFile)";
-
-                    SqlCommand myCommand = new SqlCommand(query, cnn);
-
-                    myCommand.Parameters.AddWithValue("@Id", Id);
-                    myCommand.Parameters.AddWithValue("@Name", Name);
-                    myCommand.Parameters.AddWithValue("@Surname", Surname);
-                    myCommand.Parameters.AddWithValue("@PESEL", PESEL);
-                    myCommand.Parameters.AddWithValue("@MotherName", MotherName);
-                    myCommand.Parameters.AddWithValue("@FatherName", FatherName);
-                    myCommand.Parameters.AddWithValue("@imgFile", _imgFile);
-
-                    myCommand.ExecuteNonQuery();
-
-                    cnn.Close();
-                    Refresh();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
+                Base tabela = new Base(tabName, "Add Item", WriteList.SelectedIndex);
+                tabela.Show();
             }
         }
 
@@ -185,42 +119,15 @@ namespace MainCheck
         {
             if (WriteList.SelectedItem != null)
             {
-                string connectionString;
-                SqlConnection cnn;
-                connectionString = @"Data Source=DESKTOP-DELC1R0\MATRIXSERVER;Initial Catalog=Baza;User ID=sa;Password=AlgorytmDjikstry";
-                cnn = new SqlConnection(connectionString);
-                try
-                {
-                    cnn.Open();
-                    int Id = (WriteList.SelectedItem as Baza).Id;
-                    string Name = (WriteList.SelectedItem as Baza).Name;
-                    string Surname = (WriteList.SelectedItem as Baza).Surname;
-                    long PESEL = Convert.ToInt64((WriteList.SelectedItem as Baza).PESEL);
-                    string MotherName = (WriteList.SelectedItem as Baza).MotherName;
-                    string FatherName = (WriteList.SelectedItem as Baza).FatherName;
-                    string _imgFile = (WriteList.SelectedItem as Baza)._imgFile;
-
-                    string query = "UPDATE Base SET Name = @Name, Surname = @Surname, PESEL = @PESEL, MotherName = @MotherName, FatherName = @FatherName, imgFile = @imgFile WHERE Id = @Id";
-                    SqlCommand myCommand = new SqlCommand(query, cnn);
-
-                    myCommand.Parameters.AddWithValue("@Id", Id);
-                    myCommand.Parameters.AddWithValue("@Name", Name);
-                    myCommand.Parameters.AddWithValue("@Surname", Surname);
-                    myCommand.Parameters.AddWithValue("@PESEL", PESEL);
-                    myCommand.Parameters.AddWithValue("@MotherName", MotherName);
-                    myCommand.Parameters.AddWithValue("@FatherName", FatherName);
-                    myCommand.Parameters.AddWithValue("@imgFile", _imgFile);
-
-                    myCommand.ExecuteNonQuery();
-
-                    cnn.Close();
-                    Refresh();
-                }
-                catch(Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
+                Base tabela = new Base(tabName, "Update", WriteList.SelectedIndex);
+                tabela.Show();
             }
+        }
+
+        private void Sql_Create_But_Click(object sender, RoutedEventArgs e)
+        {
+            Base tabela = new Base(tabName, "Add Items");
+            tabela.Show();
         }
     }
 }

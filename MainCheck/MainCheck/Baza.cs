@@ -21,6 +21,7 @@ namespace MainCheck
         public string _imgFile { get; set; }
         public string MotherName { get; set; }
         public string FatherName { get; set; }
+        public int Age { get; set; }
         public Baza()
         {
             Id = 0;
@@ -30,6 +31,7 @@ namespace MainCheck
             MotherName = " ";
             FatherName = " ";
             _imgFile = @"C:\Users\zwari\source\repos\Baza\MainCheck\MainCheck\bin\Debug\Pictures\Empty.png";
+            Age = 0;
         }
         [XmlIgnore]
         public BitmapImage obrazek { get; set; }
@@ -73,7 +75,7 @@ namespace MainCheck
                 Obraz.UriSource = value;
             }
         }
-        public Baza(int Id, string Name, string Surname, long PESEL, string _imgFile, string MotherName, string FatherName)
+        public Baza(int Id, string Name, string Surname, long PESEL, string _imgFile, string MotherName, string FatherName, int Age)
         {
             this.Id = Id;
             this.Name = Name;
@@ -82,6 +84,7 @@ namespace MainCheck
             this._imgFile = _imgFile;
             this.MotherName = MotherName;
             this.FatherName = FatherName;
+            this.Age = Age;
             obrazek = new BitmapImage();
             obrazek.BeginInit();
             obrazek.UriSource = new Uri(_imgFile, UriKind.Absolute);

@@ -26,7 +26,7 @@ namespace MainCheck
         {
             InitializeComponent();
         }
-        public ToChange(int Id, string Name, string Surname, long PESEL, string MotherName, string FatherName, int i, string _imgFile)
+        public ToChange(int Id, string Name, string Surname, long PESEL, string MotherName, string FatherName, int i, string _imgFile, int Age)
         {
             InitializeComponent();
             TxtId.Text = Convert.ToString(Id);
@@ -37,6 +37,7 @@ namespace MainCheck
             TxtFatherName.Text = FatherName;
             this.i = i;
             this._imgFile = _imgFile;
+            TxtAge.Text = Convert.ToString(Age);
             TxtPESEL.MaxLength = 11;
             TxtId.IsEnabled = false;
         }
@@ -49,7 +50,7 @@ namespace MainCheck
             MainWindow._bazaDanych[i].PESEL = Convert.ToInt64(TxtPESEL.Text);
             MainWindow._bazaDanych[i].MotherName = TxtMotherName.Text;
             MainWindow._bazaDanych[i].FatherName = TxtFatherName.Text;
-            MainWindow._bazaDanych[i].Name = TxtName.Text;
+            MainWindow._bazaDanych[i].Age = Convert.ToInt32(TxtAge.Text);
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "(*.BMP;*.JPG;*.GIF)|*.BMP;*.JPG;*.GIF|All files (*.*)|*.*";
             ofd.Multiselect = false;
@@ -98,6 +99,14 @@ namespace MainCheck
             else if (TxtId.Text.Length <= 0)
             {
                 WarningId.Content = "Id is too short";
+            }
+            if (TxtAge.Text.Length > 0)
+            {
+                WarningAge.Content = "";
+            }
+            else if (TxtAge.Text.Length <= 0)
+            {
+                WarningAge.Content = "Age is too short";
             }
         }
         private void BaseName_TextChanged(object sender, TextChangedEventArgs e)

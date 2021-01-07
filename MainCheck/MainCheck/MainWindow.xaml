@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MainCheck"
         mc:Ignorable="d"
-        Title="You've Something You Want" Height="450" Width="850" MinHeight="300" MinWidth="850" MaxWidth="750" Background="LightGreen">
+        Title="You've Something You Want" Height="450" Width="1100" MinHeight="300" MinWidth="1110" MaxWidth="1100" Background="LightGreen">
     <Grid>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
@@ -16,7 +17,7 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.5*"/>
             <RowDefinition Height="0.5*"/>
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
@@ -26,28 +27,27 @@
         <Button Name="Deserial" Content="Deserialize" Grid.Column="3" Grid.Row="1" VerticalAlignment="Bottom" FontSize="35" FontFamily="Bahnschrift Light Condensed" Background="Azure" Click="Deserial_Click"/>
         <Button Name="But_Refresh" Margin="2,0,10,2" Content="Refresh" Grid.Column="0" Grid.Row="1" VerticalAlignment="Bottom" MinHeight="50" MinWidth="100" Click="But_Refresh_Click" FontSize="35" FontFamily="Bahnschrift Light Condensed" Background="Bisque"/>
         <Button Name="Sql_Read_But" Grid.Column="4" Grid.Row="0" VerticalAlignment="Top" MinHeight="50" MinWidth="100" Margin="0,0,0,0" Background="Orange" Content="Read From DB" FontSize="35" FontFamily="Bahnschrift Light Condensed" Click="Sql_Read_But_Click"/>
-        <Button Name="Sql_Add_But" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" VerticalAlignment="Top" MinHeight="50" MinWidth="100" Margin="0,0,0,0" Background="Ivory" Content="Add item to DB" FontSize="35" FontFamily="Bahnschrift Light Condensed" Click="Sql_Add_But_Click"/>
-        <Button Name="Sql_Create_But" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" VerticalAlignment="Bottom" MinHeight="5" MinWidth="100" Margin="0,0,0,0" Background="Ivory" Content="Add items and create DB" FontSize="35" FontFamily="Bahnschrift Light Condensed" Click="Sql_Create_But_Click"/>
+        <Button Name="Sql_Add_But" Grid.Column="5" Grid.Row="0" VerticalAlignment="Top" Background="Ivory" Content="Add item to DB" FontSize="35" FontFamily="Bahnschrift Light Condensed" Click="Sql_Add_But_Click"/>
+        <Button Name="Sql_Create_But" Grid.Column="5" Grid.Row="0" VerticalAlignment="Bottom" MinHeight="5" MinWidth="100" Margin="0,0,0,0" Background="Ivory" Content="Add and create" FontSize="35" FontFamily="Bahnschrift Light Condensed" Click="Sql_Create_But_Click"/>
         <Button Name="Sql_Update_But" Grid.Column="2" Grid.Row="0" VerticalAlignment="Top" MinHeight="50" MinWidth="100" Margin="0,0,0,0" Background="Peru" Content="Update to DB" FontSize="35" FontFamily="Bahnschrift Light Condensed" Click="Sql_Mod_But_Click"/>
-        <Button Name="Sql_Count" Grid.Column="3" Grid.Row="0" VerticalAlignment="Top" MinHeight="35" MinWidth="100" Margin="20,0,20,0" Background="Silver" Content="Count" FontSize="35" FontFamily="Bahnschrift Light Condensed" Click="Sql_Count_Click"/>
-        <Button Name="Sql_Count_employees" Grid.Column="3" Grid.Row="0" VerticalAlignment="Bottom" MinHeight="35" MinWidth="100" Margin="20,0,20,0" Background="Silver" Content="Employees" FontSize="35" FontFamily="Bahnschrift Light Condensed" Click="Sql_Count_employees_Click"/>
-
+        <Button Name="Sql_Count" Grid.Column="5" Grid.Row="1" VerticalAlignment="Top" Background="Silver" Content="Count" Margin="5,5,5,5" FontSize="35" FontFamily="Bahnschrift Light Condensed" Click="Sql_Count_Click"/>
+        <Button Name="Sql_Count_employees" Grid.Column="5" Grid.Row="2" VerticalAlignment="Bottom" Background="Silver" Content="Employees" Margin="5,5,5,5" FontSize="35" FontFamily="Bahnschrift Light Condensed" Click="Sql_Count_employees_Click"/>
         <ListView FontSize="20" FontFamily="Bahnschrift Light Condensed" Name="WriteList" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="5" Grid.RowSpan="2">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
-                    <GridViewColumn Header="Id" Width="40" DisplayMemberBinding="{Binding Id}"/>
-                    <GridViewColumn Header="Name" Width="120" DisplayMemberBinding="{Binding Name}"/>
-                    <GridViewColumn Header="Surname" Width="120" DisplayMemberBinding="{Binding Surname}"/>
-                    <GridViewColumn Header="PESEL" Width="120" DisplayMemberBinding="{Binding PESEL}"/>
-                        <GridViewColumn Header="MotherName" Width="120" DisplayMemberBinding="{Binding MotherName}"/>
-                        <GridViewColumn Header="FatherName" Width="120" DisplayMemberBinding="{Binding FatherName}"/>
-                        <GridViewColumn Header="Age" Width="60" DisplayMemberBinding="{Binding Age}"/>
+                        <GridViewColumn Header="Id" Width="60" DisplayMemberBinding="{Binding Id}"/>
+                        <GridViewColumn Header="Name" Width="140" DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn Header="Surname" Width="140" DisplayMemberBinding="{Binding Surname}"/>
+                        <GridViewColumn Header="PESEL" Width="140" DisplayMemberBinding="{Binding PESEL}"/>
+                        <GridViewColumn Header="MotherName" Width="140" DisplayMemberBinding="{Binding MotherName}"/>
+                        <GridViewColumn Header="FatherName" Width="140" DisplayMemberBinding="{Binding FatherName}"/>
+                        <GridViewColumn Header="Age" Width="90" DisplayMemberBinding="{Binding Age}"/>
                         <GridViewColumn Header="Image">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
-                                        <Image Width="70" Source="{Binding IconUri}"/>
+                                        <Image Width="100" Source="{Binding IconUri}"/>
                                     </StackPanel>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>

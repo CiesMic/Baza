@@ -273,14 +273,13 @@ namespace MainCheck
             try
             {
                 cnn.Open();
-                string query = "SELECT AVG(Age) FROM " + tableName;
+                string query = "Select AVG([dbo].[AvgofAge](1))";
                 using (SqlCommand command = new SqlCommand(query, cnn))
                 {
                     result = Convert.ToString(command.ExecuteScalar());
                 }
                 cnn.Close();
                 MessageBox.Show(result);
-                SentMessage(tableName);
                 MainWindow.tabName = tableName;
                 Close();
             }

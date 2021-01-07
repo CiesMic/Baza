@@ -161,5 +161,36 @@ namespace MainCheck
             ChangeBtn.Visibility = Visibility.Visible;
             Properties.Visibility = Visibility.Visible;
         }
+
+        private void Sql_Count_employees_Click(object sender, RoutedEventArgs e)
+        {
+            string result = "";
+            string connectionString;
+            SqlConnection cnn;
+            connectionString = @"Data Source=DESKTOP-DELC1R0\MATRIXSERVER;Initial Catalog=Baza;User ID=sa;Password=AlgorytmDjikstry";
+            cnn = new SqlConnection(connectionString);
+            try
+            {
+                cnn.Open();
+
+                string query = "Select Count(Id) AS ilosc_pracownikow, w.Nazwa_pracy FROM Base b INNER JOIN works w ON b.Id = w.Id_pracownika Group by w.Nazwa_pracy;";
+                using (SqlCommand command = new SqlCommand(query, cnn))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            result = result + reader.GetValue(0).ToString() + " - " + reader.GetValue(1) + "\n";
+                        }
+                    }
+                }
+                MessageBox.Show(result);
+                cnn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

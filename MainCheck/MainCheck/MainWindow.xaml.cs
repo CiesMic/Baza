@@ -192,5 +192,11 @@ namespace MainCheck
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void Xmas_Click(object sender, RoutedEventArgs e)
+        {
+            XmasCard xmas = new XmasCard();
+            xmas.Show();
+        }
     }
 }

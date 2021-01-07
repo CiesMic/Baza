@@ -79,6 +79,9 @@
     <Compile Include="ToChange.xaml.cs">
       <DependentUpon>ToChange.xaml</DependentUpon>
     </Compile>
+    <Compile Include="XmasCard.xaml.cs">
+      <DependentUpon>XmasCard.xaml</DependentUpon>
+    </Compile>
     <Page Include="Base.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -101,6 +104,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ToChange.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="XmasCard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

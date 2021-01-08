@@ -20,6 +20,7 @@
             <RowDefinition Height="0.5*"/>
             <RowDefinition Height="0.5*"/>
             <RowDefinition Height="2*"/>
+            <RowDefinition Height="0.55*"/>
         </Grid.RowDefinitions>
         <!--#region Serial-->
         <Button Name="Serial" Content="Serialize" Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom" FontSize="35" FontFamily="Bahnschrift Light Condensed" Background="Azure" Click="Serial_Click"/>
@@ -31,13 +32,14 @@
         <Button Name="Sql_Add_But" Grid.Column="5" Grid.Row="0" VerticalAlignment="Top" Background="Ivory" Content="Add item to DB" FontSize="35" FontFamily="Bahnschrift Light Condensed" Click="Sql_Add_But_Click"/>
         <Button Name="Sql_Create_But" Grid.Column="5" Grid.Row="0" VerticalAlignment="Bottom" MinHeight="5" MinWidth="100" Margin="0,0,0,0" Background="Ivory" Content="Add and create" FontSize="35" FontFamily="Bahnschrift Light Condensed" Click="Sql_Create_But_Click"/>
         <Button Name="Sql_Update_But" Grid.Column="2" Grid.Row="0" VerticalAlignment="Top" MinHeight="50" MinWidth="100" Margin="0,0,0,0" Background="Peru" Content="Update to DB" FontSize="35" FontFamily="Bahnschrift Light Condensed" Click="Sql_Mod_But_Click"/>
-        <Button Name="Sql_Count" Grid.Column="5" Grid.Row="1" VerticalAlignment="Top" Background="Silver" Content="Count" Margin="5,5,5,5" FontSize="35" FontFamily="Bahnschrift Light Condensed" Click="Sql_Count_Click"/>
-        <Button Name="Sql_Count_employees" Grid.Column="5" Grid.Row="2" VerticalAlignment="Bottom" Background="Silver" Content="Employees" Margin="5,5,5,5" FontSize="35" FontFamily="Bahnschrift Light Condensed" Click="Sql_Count_employees_Click"/>
+        <Button Name="Sql_Count" Grid.Column="5" Grid.Row="1" VerticalAlignment="Top" Background="Silver" Content="Count" FontSize="35" FontFamily="Bahnschrift Light Condensed" Click="Sql_Count_Click"/>
+        <Button Name="Sql_Count_employees" Grid.Column="5" Grid.Row="2" VerticalAlignment="Bottom" Background="Silver" Content="Employees" FontSize="35" FontFamily="Bahnschrift Light Condensed" Click="Sql_Count_employees_Click"/>
         <!--#endregion-->
         <Button Name="Properties" Content="Properties" Grid.Column="4" Grid.Row="1" VerticalAlignment="Bottom" Margin="10,0,0,0" MinHeight="50" MinWidth="100" Click="Properties_Click" Background="Orchid" FontSize="35" FontFamily="Bahnschrift Light Condensed"/>
         <Button Name="ChangeBtn" Content="Change" Grid.Column="2" Grid.Row="1" VerticalAlignment="Bottom" FontSize="35" FontFamily="Bahnschrift Light Condensed" Background="Gold" Margin="5,0,5,0" Click="ChangeBtn_Click"/>
         <Button Name="Xmas" Content="Xmas Card" Grid.Row="3" Grid.Column="5" Margin="10" FontSize="35" FontFamily="Bahnschrift Light Condensed" Background="Aqua" Click="Xmas_Click"/>
-        <ListView FontSize="20" FontFamily="Bahnschrift Light Condensed" Name="WriteList" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="5" Grid.RowSpan="2">
+        <Label Name="Clock" Content="" Grid.Row="4" Grid.Column="5" FontSize="35" FontFamily="Bahnschrift Light Condensed" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+        <ListView FontSize="20" FontFamily="Bahnschrift Light Condensed" Name="WriteList" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="5" Grid.RowSpan="3">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>

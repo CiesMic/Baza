@@ -5,30 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MainCheck"
         mc:Ignorable="d"
-        Title="XmasCard" Height="500" Width="400">
+        Title="XmasCard" Height="700" Width="600" MinWidth="600">
     <Window.Resources>
-        <Style TargetType="TextBlock">
-            <Setter Property="HorizontalAlignment" Value="Center" />
-            <Setter Property="VerticalAlignment" Value="Center" />
-            <Setter Property="FontFamily" Value="Comic Sans MS"/>
-            <Setter Property="FontSize" Value="14"/>
+        <Style x:Key="Window" TargetType="{x:Type Window}">
+            
         </Style>
+        <Style x:Key="BaseStyle" TargetType="{x:Type Label}">
+            <Setter Property="Foreground" Value="Blue"/>
+            <Setter Property="FontSize" Value="60"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="FontFamily" Value="Bahnschrift Light Condensed"/>
+        </Style>
+        <Style x:Key="Wish" TargetType="{x:Type Label}" BasedOn="{StaticResource BaseStyle}">
 
-        <!--A Style that extends the previous TextBlock Style with an x:Key of TitleText-->
-        <Style BasedOn="{StaticResource {x:Type TextBlock}}"
-           TargetType="TextBlock"
-           x:Key="TitleText">
-            <Setter Property="FontSize" Value="26"/>
-            <Setter Property="Foreground">
-                <Setter.Value>
-                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                        <LinearGradientBrush.GradientStops>
-                            <GradientStop Offset="0.0" Color="#90DDDD" />
-                            <GradientStop Offset="1.0" Color="#5BFFFF" />
-                        </LinearGradientBrush.GradientStops>
-                    </LinearGradientBrush>
-                </Setter.Value>
-            </Setter>
         </Style>
     </Window.Resources>
     <Grid>
@@ -39,8 +28,8 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel>
-            <TextBlock Style="{StaticResource TitleText}" Name="textblock1">My Pictures</TextBlock>
-            <TextBlock>Check out my new pictures!</TextBlock>
+            <Label Name="Wish" Style="{StaticResource Wish}"> Merry Christmas </Label>
+        <Label Name="Year" Content="and Happy new Year"/>
         </StackPanel>
     </Grid>
 </Window>

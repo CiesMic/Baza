@@ -18,6 +18,7 @@ using Microsoft.Win32;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Xml;
 using System.Data.SqlClient;
+using System.Windows.Threading;
 
 namespace MainCheck
 {
@@ -28,9 +29,13 @@ namespace MainCheck
     {
         public static List<Baza> _bazaDanych = new List<Baza>();
         public static string tabName = "";
+        private DispatcherTimer timer;
+
         public MainWindow()
         {
             InitializeComponent();
+            Clock.Content = DateTime.Now.ToString("HH:mm:ss");
+            ClockTime();
             Sql_Count.Visibility = Visibility.Hidden;
             Sql_Add_But.Visibility = Visibility.Hidden;
             Sql_Create_But.Visibility = Visibility.Hidden;
@@ -38,6 +43,17 @@ namespace MainCheck
             Serial.Visibility = Visibility.Hidden;
             ChangeBtn.Visibility = Visibility.Hidden;
             Properties.Visibility = Visibility.Hidden;
+        }
+        private void ClockTime()
+        {
+            timer = new DispatcherTimer();
+            timer.Tick += new EventHandler(timer_Tick);
+            timer.Interval = new TimeSpan(0, 0, 1);
+            timer.Start();
+        }
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            Clock.Content = DateTime.Now.ToString("HH:mm:ss");
         }
         private void WriteFirstRow()
         {

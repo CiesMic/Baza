@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -11,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 namespace MainCheck
 {
     /// <summary>
@@ -18,33 +20,34 @@ namespace MainCheck
     /// </summary>
     public partial class XmasCard : Window
     {
+        private int a = 0;
+        private ImageBrush treeoff = new ImageBrush(new BitmapImage(new Uri(Environment.CurrentDirectory + "\\Pictures\\tree_off.png", UriKind.Relative)));
+        private ImageBrush treeon = new ImageBrush(new BitmapImage(new Uri(Environment.CurrentDirectory + "\\Pictures\\tree_on.png", UriKind.Relative)));
+        private DispatcherTimer timer;
         public XmasCard()
         {
             InitializeComponent();
+            Background = treeon;
+            xmastime();
         }
-        private void XmasCard_Load(object sender, EventArgs e)
+        private void xmastime()
         {
-            System.Windows.Forms.Timer myTimer = new System.Windows.Forms.Timer();
-            myTimer.Interval = 500; // milli seconds
-            myTimer.Tick += myTimer_Tick;
-
-
-            int a = 0;
-            if (a == 0)
+            timer = new System.Windows.Threading.DispatcherTimer();
+            timer.Tick += new EventHandler(timer_Tick);
+            timer.Interval = new TimeSpan(0, 0, 1);
+            timer.Start();
+        }
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            a = DateTime.Now.Second;
+            if (a % 2 == 0)
             {
-                myTimer.Start();
-                button6.BackColor = Color.Red;
+                Background = treeoff;
             }
             else
             {
-                button6.BackColor = Color.Green;
-
+                Background = treeon;
             }
-        }
-
-        void myTimer_Tick(object sender, EventArgs e)
-        {
-            button6.BackColor = Color.White;
         }
     }
 }

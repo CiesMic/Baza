@@ -4,6 +4,10 @@
              xmlns:local="clr-namespace:MainCheck"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style TargetType="Window" x:Key= "XmasCard">
+            <Setter Property="WindowStyle" Value="ToolWindow"/>
+            <Setter Property="WindowState" Value="Normal"/>
+            <Setter Property="Title" Value="Happy Holidays"/>
+        </Style>
     </Application.Resources>
 </Application>

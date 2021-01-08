@@ -5,11 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MainCheck"
         mc:Ignorable="d"
-        Title="XmasCard" Height="700" Width="600" MinWidth="600">
+        Height="700" Width="600" MinWidth="600" Style="{StaticResource XmasCard}">
     <Window.Resources>
-        <Style x:Key="Window" TargetType="{x:Type Window}">
-            
-        </Style>
         <Style x:Key="BaseStyle" TargetType="{x:Type Label}">
             <Setter Property="Foreground" Value="Blue"/>
             <Setter Property="FontSize" Value="60"/>
@@ -29,7 +26,7 @@
         </Grid.RowDefinitions>
         <StackPanel>
             <Label Name="Wish" Style="{StaticResource Wish}"> Merry Christmas </Label>
-        <Label Name="Year" Content="and Happy new Year"/>
+        <Label Name="Year" Content="and Happy new Year" Style="{StaticResource Wish}"/>
         </StackPanel>
     </Grid>
 </Window>

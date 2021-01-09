@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Height="700" Width="600" MinWidth="600" Style="{StaticResource XmasCard}">
     <Window.Resources>
+        <Style x:Key="XmasCard" TargetType="Window">
+            
+        </Style>
         <Style x:Key="BaseStyle" TargetType="{x:Type Label}">
             <Setter Property="Foreground" Value="Blue"/>
             <Setter Property="FontSize" Value="60"/>
@@ -14,7 +17,14 @@
             <Setter Property="FontFamily" Value="Bahnschrift Light Condensed"/>
         </Style>
         <Style x:Key="Wish" TargetType="{x:Type Label}" BasedOn="{StaticResource BaseStyle}">
-
+            
+        </Style>
+        <Style x:Key="Year" TargetType="{x:Type Label}" BasedOn="{StaticResource Wish}">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="Red"/>
+                </Trigger>
+            </Style.Triggers>
         </Style>
     </Window.Resources>
     <Grid>
@@ -26,7 +36,7 @@
         </Grid.RowDefinitions>
         <StackPanel>
             <Label Name="Wish" Style="{StaticResource Wish}"> Merry Christmas </Label>
-        <Label Name="Year" Content="and Happy new Year" Style="{StaticResource Wish}"/>
+        <Label Name="Year" Content="and Happy new Year" Style="{StaticResource Year}"/>
         </StackPanel>
     </Grid>
 </Window>

@@ -27,7 +27,7 @@ namespace MainCheck
         public XmasCard()
         {
             InitializeComponent();
-            Background = treeon;
+            Background = treeoff;
             xmastime();
         }
         private void xmastime()
@@ -42,11 +42,11 @@ namespace MainCheck
             a = DateTime.Now.Second;
             if (a % 2 == 0)
             {
-                Background = treeoff;
+                Background = treeon;
             }
             else
             {
-                Background = treeon;
+                Background = treeoff;
             }
         }
     }

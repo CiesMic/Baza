@@ -48,7 +48,7 @@ namespace MainCheck
         {
             timer = new DispatcherTimer();
             timer.Tick += new EventHandler(timer_Tick);
-            timer.Interval = new TimeSpan(0, 0, 1);
+            timer.Interval = TimeSpan.FromMilliseconds(900);
             timer.Start();
         }
         private void timer_Tick(object sender, EventArgs e)

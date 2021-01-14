@@ -20,7 +20,7 @@ namespace MainCheck
     /// </summary>
     public partial class XmasCard : Window
     {
-        private int a = 0;
+        private bool active = false;
         private ImageBrush treeoff = new ImageBrush(new BitmapImage(new Uri(Environment.CurrentDirectory + "\\Pictures\\tree_off.png", UriKind.Relative)));
         private ImageBrush treeon = new ImageBrush(new BitmapImage(new Uri(Environment.CurrentDirectory + "\\Pictures\\tree_on.png", UriKind.Relative)));
         private DispatcherTimer timer;
@@ -30,17 +30,28 @@ namespace MainCheck
             Background = treeoff;
             xmastime();
         }
+        private void Activated()
+        {
+            if (active)
+            {
+                active = false;
+            }
+            else
+            {
+                active = true;
+            }
+        }
         private void xmastime()
         {
-            timer = new System.Windows.Threading.DispatcherTimer();
+            timer = new DispatcherTimer();
             timer.Tick += new EventHandler(timer_Tick);
-            timer.Interval = new TimeSpan(0, 0, 1);
+            timer.Interval = TimeSpan.FromMilliseconds(900);
             timer.Start();
         }
         private void timer_Tick(object sender, EventArgs e)
         {
-            a = DateTime.Now.Second;
-            if (a % 2 == 0)
+            Activated();
+            if (active)
             {
                 Background = treeon;
             }

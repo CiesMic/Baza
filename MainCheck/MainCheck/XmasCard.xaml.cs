@@ -28,6 +28,8 @@ namespace MainCheck
         {
             InitializeComponent();
             Background = treeoff;
+            IsXmasDate.Content = DateTime.Now.ToString("dd.MM.yyyy");
+            Clock.Content = DateTime.Now.ToString("HH:mm:ss");
             xmastime();
         }
         private void Activated()
@@ -45,7 +47,7 @@ namespace MainCheck
         {
             timer = new DispatcherTimer();
             timer.Tick += new EventHandler(timer_Tick);
-            timer.Interval = TimeSpan.FromMilliseconds(900);
+            timer.Interval = TimeSpan.FromSeconds(1);
             timer.Start();
         }
         private void timer_Tick(object sender, EventArgs e)
@@ -59,6 +61,7 @@ namespace MainCheck
             {
                 Background = treeoff;
             }
+            Clock.Content = DateTime.Now.ToString("HH:mm:ss");
         }
     }
 }

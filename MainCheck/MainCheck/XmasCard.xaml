@@ -7,17 +7,24 @@
         mc:Ignorable="d"
         Height="700" Width="600" MinWidth="600" Style="{StaticResource XmasCard}">
     <Window.Resources>
-        <Style x:Key="XmasCard" TargetType="Window">
-            
-        </Style>
-        <Style x:Key="BaseStyle" TargetType="{x:Type Label}">
+        <Style x:Key="BaseStyle" TargetType="{x:Type Control}">
             <Setter Property="Foreground" Value="Blue"/>
-            <Setter Property="FontSize" Value="60"/>
+            <Setter Property="Background" Value="Transparent"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="FontFamily" Value="Bahnschrift Light Condensed"/>
         </Style>
         <Style x:Key="Wish" TargetType="{x:Type Label}" BasedOn="{StaticResource BaseStyle}">
-            
+            <Setter Property="FontSize" Value="60"/>
+            <Setter Property="Foreground">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0.0,1" EndPoint="0.0,0">
+                        <LinearGradientBrush.GradientStops>
+                            <GradientStop Offset="0.0" Color="Red" />
+                            <GradientStop Offset="1.0" Color="Blue" />
+                        </LinearGradientBrush.GradientStops>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
         </Style>
         <Style x:Key="Year" TargetType="{x:Type Label}" BasedOn="{StaticResource Wish}">
             <Style.Triggers>
@@ -33,10 +40,14 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel>
             <Label Name="Wish" Style="{StaticResource Wish}"> Merry Christmas </Label>
-        <Label Name="Year" Content="and Happy new Year" Style="{StaticResource Year}"/>
+            <Label Name="Year" Content="and Happy new Year" Style="{StaticResource Year}"/>
         </StackPanel>
+        <Button Name="IsXmasDate" BorderThickness="0" IsHitTestVisible="False" Grid.Column="0" Grid.Row="2" VerticalAlignment="Top" Width="150" Height="50" HorizontalAlignment="Right" Content="Date" FontSize="40" Style="{StaticResource BaseStyle}"/>
+        <Button Name="Clock" BorderThickness="0" IsHitTestVisible="False" Grid.Column="0" Grid.Row="2" VerticalAlignment="Top" Width="150" Height="50" HorizontalAlignment="Left" Content="Time" FontSize="40" Style="{StaticResource BaseStyle}"/>
     </Grid>
 </Window>

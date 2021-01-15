@@ -33,6 +33,11 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+        <Style x:Key="ButtonsForDateTime" TargetType="{x:Type Button}" BasedOn="{StaticResource BaseStyle}">
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="IsHitTestVisible" Value="False"/>
+        </Style>
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -47,7 +52,7 @@
             <Label Name="Wish" Style="{StaticResource Wish}"> Merry Christmas </Label>
             <Label Name="Year" Content="and Happy new Year" Style="{StaticResource Year}"/>
         </StackPanel>
-        <Button Name="IsXmasDate" BorderThickness="0" IsHitTestVisible="False" Grid.Column="0" Grid.Row="2" VerticalAlignment="Top" Width="150" Height="50" HorizontalAlignment="Right" Content="Date" FontSize="40" Style="{StaticResource BaseStyle}"/>
-        <Button Name="Clock" BorderThickness="0" IsHitTestVisible="False" Grid.Column="0" Grid.Row="2" VerticalAlignment="Top" Width="150" Height="50" HorizontalAlignment="Left" Content="Time" FontSize="40" Style="{StaticResource BaseStyle}"/>
+        <Button Name="IsXmasDate" Grid.Column="0" Grid.Row="2" VerticalAlignment="Top" Width="150" Height="50" HorizontalAlignment="Right" Content="Date" FontSize="40" Style="{StaticResource ButtonsForDateTime}"/>
+        <Button Name="Clock" Grid.Column="0" Grid.Row="2" VerticalAlignment="Top" Width="150" Height="50" HorizontalAlignment="Left" Content="Time" FontSize="40" Style="{StaticResource ButtonsForDateTime}"/>
     </Grid>
 </Window>

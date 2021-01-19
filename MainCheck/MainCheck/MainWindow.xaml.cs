@@ -214,5 +214,11 @@ namespace MainCheck
             XmasCard xmas = new XmasCard();
             xmas.Show();
         }
+
+        private void Rep_Viewer_Click(object sender, RoutedEventArgs e)
+        {
+            Report_Viewer rep = new Report_Viewer();
+            rep.Show();
+        }
     }
 }

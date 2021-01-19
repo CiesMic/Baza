@@ -39,7 +39,8 @@
         <Button Name="ChangeBtn" Content="Change" Grid.Column="2" Grid.Row="1" VerticalAlignment="Bottom" FontSize="35" FontFamily="Bahnschrift Light Condensed" Background="Gold" Margin="5,0,5,0" Click="ChangeBtn_Click"/>
         <Button Name="Xmas" Content="Xmas Card" Grid.Row="3" Grid.Column="5" Margin="10" FontSize="35" FontFamily="Bahnschrift Light Condensed" Background="Aqua" Click="Xmas_Click"/>
         <Label Name="Clock" Content="" Grid.Row="4" Grid.Column="5" FontSize="35" FontFamily="Bahnschrift Light Condensed" VerticalAlignment="Center" HorizontalAlignment="Right"/>
-        <ListView FontSize="20" FontFamily="Bahnschrift Light Condensed" Name="WriteList" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="5" Grid.RowSpan="3">
+        <Button Name="Rep_Viewer" Grid.Row="5" Grid.Column="5" FontSize="35" FontFamily="Bahnschrift Light Condensed" VerticalAlignment="Center" Content="Report Viewer" Background="DarkGreen" Foreground="White" Click="Rep_Viewer_Click"/>
+        <ListView FontSize="20" FontFamily="Bahnschrift Light Condensed" Name="WriteList" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="5" Grid.RowSpan="3" >
             <ListView.View>
                 <GridView>
                     <GridView.Columns>

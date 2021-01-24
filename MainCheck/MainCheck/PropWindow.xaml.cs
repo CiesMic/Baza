@@ -35,7 +35,6 @@ namespace MainCheck
             string _imgFile;
             string _MotherName;
             string _FatherName;
-            Image _image = new Image();
             int Age;
             bool txtIsNotClean = false;
             bool txtIsValue = false;

@@ -8,7 +8,7 @@
         xmlns:wfi="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
         xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
         xmlns:wfr="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms"
-        Title="Report Viewer" Height="450" Width="800" Background="LightBlue">
+        Title="Report Viewer" Height="600" Width="1160" Background="LightBlue">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
